@@ -1,0 +1,1 @@
+Please cut and paste pNoiseSounds folder to your Music folder.

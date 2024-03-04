@@ -1,0 +1,1 @@
+pScript is a System Tray tool that allows you to call batch scripts you've defined. For ease of use, it's recommended you pin the icon to your system tray and add a shortcut to your startup folder (AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup) to keep the tool running at all times, ready for whenever you need it.
