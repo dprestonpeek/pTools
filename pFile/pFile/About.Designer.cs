@@ -108,11 +108,11 @@ namespace pFile
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(151, 58);
+            this.label3.Location = new System.Drawing.Point(140, 58);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(105, 16);
+            this.label3.Size = new System.Drawing.Size(116, 16);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Version 11.22.22";
+            this.label3.Text = "Version 11.22.22-1";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1

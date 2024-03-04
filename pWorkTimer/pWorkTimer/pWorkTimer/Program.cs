@@ -60,6 +60,7 @@ namespace pWorkTimer
                     input = Console.ReadKey().KeyChar.ToString();
                     switch (input)
                     {
+                        //Add time
                         case "+":
                             string ainput;
                             do
@@ -70,7 +71,7 @@ namespace pWorkTimer
                                 if (ainput == "x")
                                     break;
                             } while (!int.TryParse(ainput, out myHours));
-                            if (ainput == "x")
+                            if (ainput != "x")
                             {
                                 if (myHours < 8)
                                 {
@@ -86,6 +87,7 @@ namespace pWorkTimer
                             }
                             updateDisplay = true;
                             break;
+                            //Subtract time
                         case "-":
                             string rinput;
                             do
@@ -112,6 +114,7 @@ namespace pWorkTimer
                             }
                             updateDisplay = true;
                             break;
+                        //view work time for each day
                         case "1":
                         case "2":
                         case "3":
@@ -124,6 +127,7 @@ namespace pWorkTimer
                             prevLine = "Time Elapsed " + (DayOfWeek)int.Parse(input) + ": " + tab + GetTimeFromSeconds(weekdays[day - 1]) + "\n"
                                 + "Time Left " + (DayOfWeek)int.Parse(input) + ": \t" + GetTimeFromSeconds(hours - weekdays[day - 1]);
                             break;
+                        //view start times for the week
                         case "s":
                             prevLine = "";
                             for (int i = 0; i < startTimeHistory.Length; i++)
@@ -131,20 +135,23 @@ namespace pWorkTimer
                                 prevLine += i + ". \t" + startTimeHistory[i] + "\n";
                             }
                             break;
+                        //view projected end time today
                         case "t":
                             prevLine = "";
                             float breakTime = 0;
                             foreach (int b in breaks)
                                 breakTime += b;
                             breakTime /= 3600; //convert to hours
-                            DateTime endTime = startTime.AddHours(8 + breakTime - offTime);
+                            DateTime endTime = startTime.AddHours(8 + breakTime - offTime - timer);
                             prevLine = endTime.ToShortTimeString();
                             break;
+                        //Get time stats for the week
                         case "w":
                             int total = 0;
                             total = GetWeekTime();
                             prevLine = "Week Time Elapsed: \t" + GetTimeFromSeconds(total) + "\nWeek Time Left: \t" + GetTimeFromSeconds((hours * 5) - total - offTime);
                             break;
+                        //view breaks
                         case "b":
                             string line = "";
                             for (int i = 0; i < breaks.Count; i++)
@@ -153,23 +160,35 @@ namespace pWorkTimer
                             }
                             prevLine = line;
                             break;
+                        //print help
                         case "h":
+                            prevLine = Help.GetHelp();
+                            break;
+                        //print time history for previous weeks
                         case "m":
                             string[] splitw = weekHistory.Split('~');
                             prevLine = "";
                             for (int i = 0; i < splitw.Length; i++)
                             {
-                                float time = int.Parse(splitw[i]);
-                                prevLine += i + ". \t" + (time / (hours * 5)).ToString().Substring(2, 2) + "\t" + GetTimeFromSeconds((int)time) + "\n";
+                                if (splitw[i].Equals(""))
+                                {
+                                    prevLine += "\nNo history to display.";
+                                }
+                                else
+                                {
+                                    float time = int.Parse(splitw[i]);
+                                    prevLine += i + ". \t" + (time / (hours * 5)).ToString().Substring(2, 2) + "\t" + GetTimeFromSeconds((int)time) + "\n";
+                                }
                             }
                             break;
+                        //log time off this week
                         case "o":
                             int offHours = offTime / 3600;
                             string oinput;
                             do
                             {
                                 updateDisplay = false;
-                                Console.WriteLine("\n\nHow many hours do you have off this week?");
+                                Console.WriteLine("\n\nCurrently " + offHours + " hours off this week. Change?\n(Enter new number, or 'x' to cancel)");
                                 oinput = Console.ReadLine();
                                 if (oinput == "x")
                                     break;
@@ -177,18 +196,22 @@ namespace pWorkTimer
                             offTime = offHours * 3600;
                             updateDisplay = true;
                             break;
+                        //open info file
                         case "i":
                             Process.Start("notepad.exe", infofile);
                             break;
+                        //open log file
                         case "l":
                             Process.Start("notepad.exe", logfile);
                             break;
+                        //clear the console
                         case "c":
                             prevLine = "";
                             break;
-                        case "u":
-                            CheckForUpdates();
-                            break;
+                        //update the program
+                        //case "u":
+                        //    CheckForUpdates();
+                        //    break;
                     }
                 } while (input != "x");
             }

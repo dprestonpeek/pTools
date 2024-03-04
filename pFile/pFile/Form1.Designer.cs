@@ -52,6 +52,7 @@ namespace pFile
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.Browser1Panel = new System.Windows.Forms.Panel();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Panel1Favorite = new System.Windows.Forms.Button();
@@ -69,6 +70,7 @@ namespace pFile
             this.Panel1Terminal = new System.Windows.Forms.ToolStripMenuItem();
             this.Panel1Drives = new System.Windows.Forms.ToolStripMenuItem();
             this.Panel1Favorites = new System.Windows.Forms.ToolStripMenuItem();
+            this.Browser2Panel = new System.Windows.Forms.Panel();
             this.webBrowser2 = new System.Windows.Forms.WebBrowser();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Panel2Favorite = new System.Windows.Forms.Button();
@@ -89,19 +91,17 @@ namespace pFile
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.Browser1Panel = new System.Windows.Forms.Panel();
-            this.Browser2Panel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.Browser1Panel.SuspendLayout();
             this.panel1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
+            this.Browser2Panel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.menuStrip3.SuspendLayout();
-            this.Browser1Panel.SuspendLayout();
-            this.Browser2Panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -268,6 +268,7 @@ namespace pFile
             this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
             this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.checkForUpdatesToolStripMenuItem.Text = "Check for Updates...";
+            this.checkForUpdatesToolStripMenuItem.Visible = false;
             this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // splitContainer1
@@ -292,6 +293,15 @@ namespace pFile
             this.splitContainer1.Size = new System.Drawing.Size(805, 468);
             this.splitContainer1.SplitterDistance = 402;
             this.splitContainer1.TabIndex = 1;
+            // 
+            // Browser1Panel
+            // 
+            this.Browser1Panel.Controls.Add(this.webBrowser1);
+            this.Browser1Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Browser1Panel.Location = new System.Drawing.Point(0, 75);
+            this.Browser1Panel.Name = "Browser1Panel";
+            this.Browser1Panel.Size = new System.Drawing.Size(402, 393);
+            this.Browser1Panel.TabIndex = 2;
             // 
             // webBrowser1
             // 
@@ -463,6 +473,15 @@ namespace pFile
             this.Panel1Favorites.Name = "Panel1Favorites";
             this.Panel1Favorites.Size = new System.Drawing.Size(66, 20);
             this.Panel1Favorites.Text = "Favorites";
+            // 
+            // Browser2Panel
+            // 
+            this.Browser2Panel.Controls.Add(this.webBrowser2);
+            this.Browser2Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Browser2Panel.Location = new System.Drawing.Point(0, 75);
+            this.Browser2Panel.Name = "Browser2Panel";
+            this.Browser2Panel.Size = new System.Drawing.Size(399, 393);
+            this.Browser2Panel.TabIndex = 4;
             // 
             // webBrowser2
             // 
@@ -647,24 +666,6 @@ namespace pFile
             this.openFileDialog1.FileName = "myPfile.pfp";
             this.openFileDialog1.Title = "Open pFile Session...";
             // 
-            // Browser1Panel
-            // 
-            this.Browser1Panel.Controls.Add(this.webBrowser1);
-            this.Browser1Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Browser1Panel.Location = new System.Drawing.Point(0, 75);
-            this.Browser1Panel.Name = "Browser1Panel";
-            this.Browser1Panel.Size = new System.Drawing.Size(402, 393);
-            this.Browser1Panel.TabIndex = 2;
-            // 
-            // Browser2Panel
-            // 
-            this.Browser2Panel.Controls.Add(this.webBrowser2);
-            this.Browser2Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Browser2Panel.Location = new System.Drawing.Point(0, 75);
-            this.Browser2Panel.Name = "Browser2Panel";
-            this.Browser2Panel.Size = new System.Drawing.Size(399, 393);
-            this.Browser2Panel.TabIndex = 4;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -684,16 +685,16 @@ namespace pFile
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.Browser1Panel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();
+            this.Browser2Panel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.menuStrip3.ResumeLayout(false);
             this.menuStrip3.PerformLayout();
-            this.Browser1Panel.ResumeLayout(false);
-            this.Browser2Panel.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
