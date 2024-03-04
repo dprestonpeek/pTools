@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Browse" xml:space="preserve">
+    <value>Opens a directory selection window. Selected directory opens in designated panel when clicked.</value>
+  </data>
+  <data name="C:/" xml:space="preserve">
+    <value>A shortcut to the C drive. Opens in designated panel when clicked.</value>
+  </data>
+  <data name="Drives" xml:space="preserve">
+    <value>List of shortcuts populated by external drives connected to the computer. Opens in designated panel when clicked.</value>
+  </data>
+  <data name="EditClearFavorites" xml:space="preserve">
+    <value>Clears the list of favorited directories.</value>
+  </data>
+  <data name="EditPerformOp" xml:space="preserve">
+    <value>Opens the Operation window. This can be used to Copy, Move or Rename files between panels with some additional options.</value>
+  </data>
+  <data name="EditResetDefaultStartup" xml:space="preserve">
+    <value>Resets default directories to their original values. </value>
+  </data>
+  <data name="Favorite" xml:space="preserve">
+    <value>Marks a directory as "favorite" and adds it to the favorites list.</value>
+  </data>
+  <data name="Favorites" xml:space="preserve">
+    <value>List of favorited directories. Opens in designated panel when clicked.</value>
+  </data>
+  <data name="FileExit" xml:space="preserve">
+    <value>Closes pFile.</value>
+  </data>
+  <data name="FileImportConfig" xml:space="preserve">
+    <value>Loads Config from specified .pfp file. This includes default directories and the list of favorite directories.</value>
+  </data>
+  <data name="FileNewWindow" xml:space="preserve">
+    <value>Opens a new instance of pFile. Files can be dragged between windows.</value>
+  </data>
+  <data name="FileSaveConfig" xml:space="preserve">
+    <value>Saves the current Config as default. This includes default directories and the list of favorite directories.</value>
+  </data>
+  <data name="Go" xml:space="preserve">
+    <value>Navigates to directory in the designated panel's address bar. Can also be used as a refresh button if the address is not changed.</value>
+  </data>
+  <data name="HelpAbout" xml:space="preserve">
+    <value>Opens this window.</value>
+  </data>
+  <data name="LeftBack" xml:space="preserve">
+    <value>Navigates to previous directory in designated panel.</value>
+  </data>
+  <data name="OpenExplorer" xml:space="preserve">
+    <value>Opens the directory of the designated panel in a Windows File Explorer window. </value>
+  </data>
+  <data name="OpenTerminal" xml:space="preserve">
+    <value>Opens the directory of the designated panel in a command prompt.</value>
+  </data>
+  <data name="RightForward" xml:space="preserve">
+    <value>Navigates to next directory in designated panel.</value>
+  </data>
+  <data name="Up" xml:space="preserve">
+    <value>Navigates to parent directory in designated panel.</value>
+  </data>
+  <data name="User" xml:space="preserve">
+    <value>A shortcut to the current User folder. Opens in designated panel when clicked.</value>
+  </data>
+  <data name="ViewAlwaysTop" xml:space="preserve">
+    <value>Keeps the pFile window on top of all other windows. </value>
+  </data>
+  <data name="ViewOrientation" xml:space="preserve">
+    <value>Specifies the Orientation of the file explorer panels. Vertical meaning the panels are on the left and right, and Horizontal meaning the panels are on the bottom and top.</value>
+  </data>
+</root>
