@@ -19,6 +19,7 @@ namespace pScript
         string displayText = "";
         string commandText = "";
         bool togglable = false;
+        int prevSelected = -1;
 
         public EditCommands()
         {
@@ -147,11 +148,14 @@ namespace pScript
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            aboutToAdd = true;
-            int i = CommandList.Items.Add("New Command...");
-            CommandList.SelectedIndex = i;
-            Commands.commandList.Add(new Command("", "", false));
-            EnableDisableEditing();
+            if (!aboutToAdd)
+            {
+                aboutToAdd = true;
+                int i = CommandList.Items.Add("New Command...");
+                CommandList.SelectedIndex = i;
+                Commands.commandList.Add(new Command("", "", false));
+                EnableDisableEditing();
+            }
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -165,6 +169,7 @@ namespace pScript
         private void ReorderUp_Click(object sender, EventArgs e)
         {
             int index = CommandList.SelectedIndex;
+            prevSelected = index;
             if (index > 0)
             {
                 Command cmdToMove = Commands.commandList[index];
@@ -173,12 +178,14 @@ namespace pScript
                 Commands.commandList[index] = temp;
                 RefreshList();
                 DisableEditing();
+                CommandList.SelectedIndex = prevSelected - 1;
             }
         }
 
         private void ReorderDown_Click(object sender, EventArgs e)
         {
             int index = CommandList.SelectedIndex;
+            prevSelected = index;
             if (index != CommandList.Items.Count - 1)
             {
                 Command cmdToMove = Commands.commandList[index];
@@ -187,6 +194,7 @@ namespace pScript
                 Commands.commandList[index] = temp;
                 RefreshList();
                 DisableEditing();
+                CommandList.SelectedIndex = prevSelected + 1;
             }
         }
 

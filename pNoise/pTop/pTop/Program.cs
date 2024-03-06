@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Threading;
 using System.IO;
 using System.Media;
+using System.Reflection;
 
 namespace pTop
 {
@@ -55,7 +56,10 @@ namespace pTop
                 ToolStripMenuItem quit = (ToolStripMenuItem)windowMenu.Items.Add("Quit pNoise");
                 quit.Name = "Quit";
                 quit.Click += ClickedItem;
-                windowMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
+
+                MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
+                mi.Invoke(notifyIcon, null);
+                //windowMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
             }
         }
 

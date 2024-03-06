@@ -7,7 +7,7 @@ using HWND = System.IntPtr;
 using System.Drawing;
 using System.Threading;
 using System.IO;
-using System.Media;
+using System.Reflection;
 
 namespace pScript
 {
@@ -21,8 +21,10 @@ namespace pScript
         static NotifyIcon notifyIcon = new NotifyIcon();
         static ContextMenuStrip commandMenu = new ContextMenuStrip();
         static ContextMenuStrip pTopMenu = new ContextMenuStrip();
+        static EditCommands editCmdsWindow;
 
         static string currentSelected = "";
+        static bool editingCommands = false;
 
         static void Main(string[] args)
         {
@@ -93,7 +95,10 @@ namespace pScript
                 ToolStripMenuItem quit = (ToolStripMenuItem)commandMenu.Items.Add("Quit " + programName);
                 quit.Name = "Quit";
                 quit.Click += ClickedItem;
-                commandMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
+
+                MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
+                mi.Invoke(notifyIcon, null);
+                //commandMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
             }
         }
 
@@ -102,7 +107,17 @@ namespace pScript
             ToolStripMenuItem option = (ToolStripMenuItem)sender;
             if (option.Name == "Edit")
             {
-                new EditCommands().ShowDialog();
+                if (!editingCommands)
+                {
+                    editingCommands = true;
+                    editCmdsWindow = new EditCommands();
+                    editCmdsWindow.ShowDialog();
+                    editingCommands = false;
+                }
+                else
+                {
+                    editCmdsWindow.Focus();
+                }
             }
             if (option.Name == "Close")
             {

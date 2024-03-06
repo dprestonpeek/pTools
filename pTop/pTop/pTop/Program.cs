@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using System.Text;
 using HWND = System.IntPtr;
 using System.Drawing;
+using System.Reflection;
 using System.Threading;
 
 namespace pTop
@@ -76,7 +77,10 @@ namespace pTop
                 ToolStripMenuItem quit = (ToolStripMenuItem)windowMenu.Items.Add("Quit pTop");
                 quit.Name = "Quit";
                 quit.Click += ClickedItem;
-                windowMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
+
+                MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
+                mi.Invoke(notifyIcon, null);
+                //windowMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
             }
         }
 
