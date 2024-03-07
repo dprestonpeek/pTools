@@ -89,16 +89,12 @@ namespace pScript
                 ToolStripMenuItem editCommand = (ToolStripMenuItem)commandMenu.Items.Add("Edit Commands...");
                 editCommand.Name = "Edit";
                 editCommand.Click += ClickedItem;
-                ToolStripMenuItem close = (ToolStripMenuItem)commandMenu.Items.Add("Close Menu");
-                close.Name = "Close";
-                close.Click += ClickedItem;
                 ToolStripMenuItem quit = (ToolStripMenuItem)commandMenu.Items.Add("Quit " + programName);
                 quit.Name = "Quit";
                 quit.Click += ClickedItem;
 
                 MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
                 mi.Invoke(notifyIcon, null);
-                //commandMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
             }
         }
 
@@ -119,11 +115,7 @@ namespace pScript
                     editCmdsWindow.Focus();
                 }
             }
-            if (option.Name == "Close")
-            {
-                return;
-            }
-            else if (option.Name == "Quit")
+            if (option.Name == "Quit")
             {
                 Application.Exit();
                 return;

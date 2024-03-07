@@ -50,27 +50,19 @@ namespace pTop
                 }
                 ToolStripMenuItem divider = (ToolStripMenuItem)windowMenu.Items.Add("____________");
                 divider.Enabled = false;
-                ToolStripMenuItem close = (ToolStripMenuItem)windowMenu.Items.Add("Close Menu");
-                close.Name = "Close";
-                close.Click += ClickedItem;
                 ToolStripMenuItem quit = (ToolStripMenuItem)windowMenu.Items.Add("Quit pNoise");
                 quit.Name = "Quit";
                 quit.Click += ClickedItem;
 
                 MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
                 mi.Invoke(notifyIcon, null);
-                //windowMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
             }
         }
 
         private static void ClickedItem(object sender, EventArgs e)
         {
             ToolStripMenuItem option = (ToolStripMenuItem)sender;
-            if (option.Name == "Close")
-            {
-                return;
-            }
-            else if (option.Name == "Quit")
+            if (option.Name == "Quit")
             {
                 Application.Exit();
                 return;

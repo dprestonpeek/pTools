@@ -71,27 +71,19 @@ namespace pTop
                 }
                 ToolStripMenuItem divider = (ToolStripMenuItem)windowMenu.Items.Add("____________");
                 divider.Enabled = false;
-                ToolStripMenuItem close = (ToolStripMenuItem)windowMenu.Items.Add("Close Menu");
-                close.Name = "Close";
-                close.Click += ClickedItem;
                 ToolStripMenuItem quit = (ToolStripMenuItem)windowMenu.Items.Add("Quit pTop");
                 quit.Name = "Quit";
                 quit.Click += ClickedItem;
 
                 MethodInfo mi = typeof(NotifyIcon).GetMethod("ShowContextMenu", BindingFlags.Instance | BindingFlags.NonPublic);
                 mi.Invoke(notifyIcon, null);
-                //windowMenu.Show(new Point(Cursor.Position.X, Cursor.Position.Y));
             }
         }
 
         private static void ClickedItem(object sender, EventArgs e)
         {
             ToolStripMenuItem window = (ToolStripMenuItem)sender;
-            if (window.Name == "Close")
-            {
-                return;
-            }
-            else if (window.Name == "Quit")
+            if (window.Name == "Quit")
             {
                 Application.Exit();
             }
@@ -99,7 +91,6 @@ namespace pTop
             IntPtr hwnd = FindWindow(null, window.Text);
 
             ToggleTopMost(hwnd);
-            //window.Checked = true;
         }
 
         public static bool IsTopMost(IntPtr hwnd)
