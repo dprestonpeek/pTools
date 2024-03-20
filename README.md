@@ -16,14 +16,19 @@ ____________________________________________________________________
 - Add your own sound clips to the pNoiseSounds folder
 - Add quick fade in and out FX on the clip for better looping without hiccups
 ____________________________________________________________________
-**pPassword**  - A command line 16 character password generator
-- Press Enter to generate a password
-- Enter 'y' for another
-____________________________________________________________________
 **pNotes**    - A text-crawling command line multi-tool
 - Browse, select, open and read local text files on your PC
 - Recursively search through text files for a specific keyword
 - Search filenames within folders (for when Windows search is acting up)
+____________________________________________________________________
+**pPassword**  - A command line 16 character password generator
+- Press Enter to generate a password
+- Enter 'y' for another
+____________________________________________________________________
+**pScramble**  - A Windows Forms Image Scrambler
+- Load, preview and scramble images on your local PC
+- Each pixel is moved to another spot in the image, so the image can still be 100% reconstructed
+- Add a password key to the scramble process for more security
 ____________________________________________________________________
 **pScript**   - A system tray menu to execute pre-written scripts on the fly
 - Add/remove and organize scripts in a list
