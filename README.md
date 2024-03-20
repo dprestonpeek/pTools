@@ -25,6 +25,11 @@ ____________________________________________________________________
 - Press Enter to generate a password
 - Enter 'y' for another
 ____________________________________________________________________
+**pScramble**  - A Windows Forms Image Scrambler
+- Load, preview and scramble images on your local PC
+- Each pixel is moved to another spot in the image, so the image can still be 100% reconstructed
+- Add a password key to the scramble process for more security
+____________________________________________________________________
 **pScript**   - A system tray menu to execute pre-written scripts on the fly
 - Add/remove and organize scripts in a list
 - Click on a menu item to execute the script
