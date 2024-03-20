@@ -16,6 +16,10 @@ ____________________________________________________________________
 - Add your own sound clips to the pNoiseSounds folder
 - Add quick fade in and out FX on the clip for better looping without hiccups
 ____________________________________________________________________
+**pPassword**  - A command line 16 character password generator
+- Press Enter to generate a password
+- Enter 'y' for another
+____________________________________________________________________
 **pNotes**    - A text-crawling command line multi-tool
 - Browse, select, open and read local text files on your PC
 - Recursively search through text files for a specific keyword
