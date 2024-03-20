@@ -21,6 +21,10 @@ ____________________________________________________________________
 - Recursively search through text files for a specific keyword
 - Search filenames within folders (for when Windows search is acting up)
 ____________________________________________________________________
+**pPassword**  - A command line 16 character password generator
+- Press Enter to generate a password
+- Enter 'y' for another
+____________________________________________________________________
 **pScript**   - A system tray menu to execute pre-written scripts on the fly
 - Add/remove and organize scripts in a list
 - Click on a menu item to execute the script
