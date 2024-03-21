@@ -8,7 +8,9 @@ namespace pNotes
 {
     public class Help
     {
-        public static string listHelp = "Similar to 'ls' command in bash. Lists some or all files at the current directory depending on args given.\n\n" + 
+        public static string listHelp = "Similar to 'ls' command in bash. Lists some or all files at the current directory depending on args given.\n\n" +
+            "Modifiers:\n'-i' only lists files.\n" +
+            "'-o' only lists folders.\n" +
             "Examples:\n'list text' or 'ls text' prints all files containing the 'text' keyword. \n" + 
             "'list' or 'ls' prints all files at the current directory.";
         public static string findHelp = "Crawl through all specified text files for a specific keyword, and print that file name along with an exerpt containing the keyword.\n\n" +
@@ -44,7 +46,7 @@ namespace pNotes
         public static string pathHelp = "View or Change the current working directory.\n\n" +
             "Examples:\n'path' prints the current directory.\n" +
             "'path C:\\Users\\user\\Documents' changes the current working directory to C:\\Users\\user\\Documents.";
-        public static string helpHelp = "Opens the Help Overview page. Did you REALLY need help figuring that out?\n\n" +
+        public static string helpHelp = "Opens the Help Overview page.\n\n" +
             "Examples:\n'help' opens the Help Overview page.\n" +
             "'help help' opens this Help page for the Help command.";
         public static string exitHelp = "Exits the program.\n\n" + 
@@ -52,7 +54,7 @@ namespace pNotes
 
         public static void PrintCommandHelp(string commandInput)
         {
-            Command cmd = Command.GetCommandByString(commandInput, Commands.List);
+            Command cmd = Command.GetCommandByString(commandInput);
             Output.PrintHorizontalBarrier();
             Output.WriteLine(cmd.Name + " - HELP\n");
             if (cmd.CmdHelp != "")
@@ -60,10 +62,10 @@ namespace pNotes
                 Output.WriteLine(cmd.CmdHelp);
             }
             Output.WriteLine("\nAlternate Commands: ");
-            for (int i = 0; i < cmd.Commands.Length; i++)
+            for (int i = 0; i < cmd.CommandAlts.Length; i++)
             {
-                Output.Write(cmd.Commands[i]);
-                if (i < cmd.Commands.Length - 1)
+                Output.Write(cmd.CommandAlts[i]);
+                if (i < cmd.CommandAlts.Length - 1)
                 {
                     Output.Write(", ");
                 }

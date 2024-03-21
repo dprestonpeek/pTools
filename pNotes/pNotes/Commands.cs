@@ -27,7 +27,7 @@ namespace pNotes
     public class Command
     {
         public string Name;
-        public string[] Commands;
+        public string[] CommandAlts;
         public string NoArgsDesc;
         public string ArgsDesc;
         public string CmdHelp;
@@ -36,7 +36,7 @@ namespace pNotes
         public Command(string name, string[] commands, string noArgsDesc, string argsDesc, Action action)
         {
             Name = name;
-            Commands = commands;
+            CommandAlts = commands;
             NoArgsDesc = noArgsDesc;
             ArgsDesc = argsDesc;
             CmdHelp = "";
@@ -46,7 +46,7 @@ namespace pNotes
         public Command(string name, string[] commands, string noArgsDesc, string argsDesc, string cmdHelp, Action action)
         {
             Name = name;
-            Commands = commands;
+            CommandAlts = commands;
             NoArgsDesc = noArgsDesc;
             ArgsDesc = argsDesc;
             CmdHelp = cmdHelp;
@@ -56,7 +56,7 @@ namespace pNotes
         public string GetCommandsAsString()
         {
             string commands = "";
-            foreach (string command in Commands)
+            foreach (string command in CommandAlts)
             {
                 commands += command + ", ";
             }
@@ -64,9 +64,24 @@ namespace pNotes
             return commands;
         }
 
-        public bool ContainsCommand(string commandInput)
+        public static bool ContainsCommand(string commandInput)
         {
-            foreach (string command in Commands)
+            foreach (Command command in Commands.List)
+            {
+                foreach (string cmd in command.CommandAlts)
+                {
+                    if (commandInput.Contains(cmd.Split(' ')[0]))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool ContainsCommandAlt(string commandInput)
+        {
+            foreach (string command in CommandAlts)
             {
                 if (commandInput.Contains(command))
                 {
@@ -76,23 +91,30 @@ namespace pNotes
             return false;
         }
 
-        public bool EqualsFullCommand(string commandInput)
+        public static bool EqualsFullCommand(string commandInput)
         {
-            foreach (string command in Commands)
+            string typedCommand = commandInput.Split(' ')[0];
+            foreach (Command command in Commands.List)
             {
-                if (commandInput.Equals(command))
+                if (command.ContainsCommandAlt(typedCommand))
                 {
-                    return true;
+                    foreach (string cmd in command.CommandAlts)
+                    {
+                        if (cmd == typedCommand)
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
             return false;
         }
 
-        public static Command GetCommandByString(string commandInput, List<Command> Commands)
+        public static Command GetCommandByString(string commandInput)
         {
-            foreach (Command command in Commands)
+            foreach (Command command in Commands.List)
             {
-                foreach(string cmd in command.Commands)
+                foreach(string cmd in command.CommandAlts)
                 {
                     if (cmd.Contains(commandInput))
                     {
