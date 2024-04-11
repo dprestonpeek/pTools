@@ -95,7 +95,6 @@ namespace pNotes
                             try
                             {
                                 task = Task.Factory.StartNew(() => { theCommand.Action.Invoke(); });
-                                break;
                             }
                             catch (Exception e)
                             {

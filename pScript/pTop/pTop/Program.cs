@@ -77,12 +77,53 @@ namespace pScript
             {
                 notifyIcon.ContextMenuStrip = commandMenu;
                 commandMenu.Items.Clear();
+                ToolStripMenuItem lastItemAdded = null;
+                List<ToolStripMenuItem> parents = new List<ToolStripMenuItem>();
                 foreach (Command command in Commands.commandList)
                 {
+                    ToolStripMenuItem itemToAdd = null;
                     string displayName = command.displayText;
-                    ToolStripMenuItem item = (ToolStripMenuItem)commandMenu.Items.Add(displayName);
-                    item.Click += ClickedItem;
-                    item.Checked = command.isOn;
+                    if (displayName.Contains(">>") || displayName.Contains("<<"))
+                    {
+                        if (displayName.Contains(">>"))
+                        {
+                            if (parents.Count > 0)
+                            {
+                                itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
+                            }
+                            else
+                            {
+                                itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2));
+                            }
+                            parents.Add(itemToAdd);
+                        }
+                        else if (displayName.Contains("<<"))
+                        {
+                            if (parents.Count > 1)
+                            {
+                                parents.RemoveAt(parents.Count - 1);
+                                itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
+                            }
+                            else
+                            {
+                                itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (parents.Count > 0)
+                        {
+                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName);
+                        }
+                        else
+                        {
+                            itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName);
+                        }
+                    }
+                    itemToAdd.Click += ClickedItem;
+                    itemToAdd.Checked = command.isOn;
+                    lastItemAdded = itemToAdd;
                 }
                 ToolStripMenuItem divider = (ToolStripMenuItem)commandMenu.Items.Add("____________");
                 divider.Enabled = false;

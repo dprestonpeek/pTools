@@ -36,7 +36,7 @@ namespace pScript
             this.label2 = new System.Windows.Forms.Label();
             this.TogglableCheckbox = new System.Windows.Forms.CheckBox();
             this.CreateButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.theCancelButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -99,20 +99,20 @@ namespace pScript
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(326, 206);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 6;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.theCancelButton.Location = new System.Drawing.Point(326, 206);
+            this.theCancelButton.Name = "CancelButton";
+            this.theCancelButton.Size = new System.Drawing.Size(75, 23);
+            this.theCancelButton.TabIndex = 6;
+            this.theCancelButton.Text = "Cancel";
+            this.theCancelButton.UseVisualStyleBackColor = true;
+            this.theCancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // NewCommand
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(494, 233);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.theCancelButton);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.TogglableCheckbox);
             this.Controls.Add(this.label2);
@@ -132,7 +132,7 @@ namespace pScript
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button CreateButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button theCancelButton;
         public System.Windows.Forms.TextBox DisplayTextBox;
         public System.Windows.Forms.RichTextBox CommandTextBox;
         public System.Windows.Forms.CheckBox TogglableCheckbox;
