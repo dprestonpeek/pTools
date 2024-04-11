@@ -139,13 +139,16 @@ namespace pScript
                         }
                         parents.Add(itemToAdd);
                     }
-                    //this will be the last item in a submenu
+                    //close the current submenu and create a new item
                     else if (displayName.Contains("<<"))
                     {
                         if (parents.Count > 0)
                         {
-                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
                             parents.RemoveAt(parents.Count - 1);
+                        }
+                        if (parents.Count > 0)
+                        {
+                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
                         }
                         else
                         {
