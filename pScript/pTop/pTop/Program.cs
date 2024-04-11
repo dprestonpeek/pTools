@@ -142,17 +142,32 @@ namespace pScript
                     //close the current submenu and create a new item
                     else if (displayName.Contains("<<"))
                     {
+                        string braces = "<<<";
+                        int substringAdd = 0;
+                        while (displayName.Contains(braces))
+                        {
+                            if (parents.Count > 0)
+                            {
+                                parents.RemoveAt(parents.Count - 1);
+                                braces += "<";
+                                substringAdd++;
+                            }
+                            else
+                            {
+                                return;
+                            }
+                        }
                         if (parents.Count > 0)
                         {
                             parents.RemoveAt(parents.Count - 1);
                         }
                         if (parents.Count > 0)
                         {
-                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
+                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2 + substringAdd));
                         }
                         else
                         {
-                            itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2));
+                            itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2 + substringAdd));
                         }
                     }
                     else
