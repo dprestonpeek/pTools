@@ -46,6 +46,7 @@ namespace pScript
             this.DeleteButton = new System.Windows.Forms.Button();
             this.SaveChanges = new System.Windows.Forms.Label();
             this.FlashTimer = new System.Windows.Forms.Timer(this.components);
+            this.HelpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -208,11 +209,22 @@ namespace pScript
             // 
             this.FlashTimer.Interval = 10;
             // 
+            // HelpButton
+            // 
+            this.HelpButton.Location = new System.Drawing.Point(195, 7);
+            this.HelpButton.Name = "HelpButton";
+            this.HelpButton.Size = new System.Drawing.Size(75, 23);
+            this.HelpButton.TabIndex = 17;
+            this.HelpButton.Text = "Help";
+            this.HelpButton.UseVisualStyleBackColor = true;
+            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
+            // 
             // EditCommands
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(479, 311);
+            this.Controls.Add(this.HelpButton);
             this.Controls.Add(this.SaveChanges);
             this.Controls.Add(this.TogglableCheckbox);
             this.Controls.Add(this.DeleteButton);
@@ -229,7 +241,7 @@ namespace pScript
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditCommands";
-            this.Text = "pScript v1.02 (edit commands)";
+            this.Text = "pScript v1.03 (edit commands)";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +264,6 @@ namespace pScript
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Label SaveChanges;
         public System.Windows.Forms.Timer FlashTimer;
+        private System.Windows.Forms.Button HelpButton;
     }
 }

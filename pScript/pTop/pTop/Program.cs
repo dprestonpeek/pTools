@@ -83,31 +83,73 @@ namespace pScript
                 {
                     ToolStripMenuItem itemToAdd = null;
                     string displayName = command.displayText;
-                    if (displayName.Contains(">>") || displayName.Contains("<<"))
+                    //this is the last item in submenu, but also a new parent
+                    if (displayName.Contains("<>"))
                     {
-                        if (displayName.Contains(">>"))
+                        if (parents.Count > 0)
+                        {
+                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
+                            parents.RemoveAt(parents.Count - 1);
+                            parents.Add(itemToAdd);
+                        }
+                    }
+                    //this is a new parent, but also close the current submenu
+                    else if (displayName.Contains("><"))
+                    {
+                        string braces = "><<";
+                        int substringAdd = 0;
+                        while (displayName.Contains(braces))
                         {
                             if (parents.Count > 0)
                             {
-                                itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
+                                parents.RemoveAt(parents.Count - 1);
+                                braces += "<";
+                                substringAdd++;
                             }
                             else
                             {
-                                itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2));
+                                return;
+                            }
+                        }
+
+                        if (parents.Count > 0)
+                        {
+                            parents.RemoveAt(parents.Count - 1);
+                            if (parents.Count > 0)
+                            {
+                                itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2 + substringAdd));
+                            }
+                            else
+                            {
+                                itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2 + substringAdd));
                             }
                             parents.Add(itemToAdd);
                         }
-                        else if (displayName.Contains("<<"))
+                    }
+                    //this will be a new parent
+                    else if (displayName.Contains(">>"))
+                    {
+                        if (parents.Count > 0)
                         {
-                            if (parents.Count > 1)
-                            {
-                                parents.RemoveAt(parents.Count - 1);
-                                itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
-                            }
-                            else
-                            {
-                                itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2));
-                            }
+                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
+                        }
+                        else
+                        {
+                            itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2));
+                        }
+                        parents.Add(itemToAdd);
+                    }
+                    //this will be the last item in a submenu
+                    else if (displayName.Contains("<<"))
+                    {
+                        if (parents.Count > 0)
+                        {
+                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
+                            parents.RemoveAt(parents.Count - 1);
+                        }
+                        else
+                        {
+                            itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2));
                         }
                     }
                     else
@@ -121,9 +163,12 @@ namespace pScript
                             itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName);
                         }
                     }
-                    itemToAdd.Click += ClickedItem;
-                    itemToAdd.Checked = command.isOn;
-                    lastItemAdded = itemToAdd;
+                    if (itemToAdd != null)
+                    {
+                        itemToAdd.Click += ClickedItem;
+                        itemToAdd.Checked = command.isOn;
+                        lastItemAdded = itemToAdd;
+                    }
                 }
                 ToolStripMenuItem divider = (ToolStripMenuItem)commandMenu.Items.Add("____________");
                 divider.Enabled = false;

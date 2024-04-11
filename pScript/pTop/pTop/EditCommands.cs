@@ -212,5 +212,10 @@ namespace pScript
         {
             editing = true;
         }
+
+        private void HelpButton_Click(object sender, EventArgs e)
+        {
+            new HelpWindow().Show();
+        }
     }
 }
