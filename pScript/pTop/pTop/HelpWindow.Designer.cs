@@ -67,9 +67,10 @@ namespace pScript
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(46, 75);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(357, 15);
+            this.label3.Size = new System.Drawing.Size(352, 30);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Indicates the current node is the last node in the current submenu.";
+            this.label3.Text = "Indicates the current node is a new non-parent node. The current \r\nsubmenu will b" +
+    "e closed.";
             // 
             // label4
             // 
@@ -92,7 +93,7 @@ namespace pScript
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 105);
+            this.label6.Location = new System.Drawing.Point(12, 116);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(23, 15);
             this.label6.TabIndex = 5;
@@ -101,7 +102,7 @@ namespace pScript
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 105);
+            this.label7.Location = new System.Drawing.Point(46, 116);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(357, 45);
             this.label7.TabIndex = 6;
@@ -112,7 +113,7 @@ namespace pScript
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 156);
+            this.label8.Location = new System.Drawing.Point(12, 167);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(23, 15);
             this.label8.TabIndex = 7;
@@ -121,7 +122,7 @@ namespace pScript
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(46, 156);
+            this.label9.Location = new System.Drawing.Point(46, 167);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(369, 45);
             this.label9.TabIndex = 8;
@@ -130,7 +131,7 @@ namespace pScript
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 214);
+            this.label10.Location = new System.Drawing.Point(5, 225);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(40, 15);
             this.label10.TabIndex = 9;
@@ -139,7 +140,7 @@ namespace pScript
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(46, 214);
+            this.label11.Location = new System.Drawing.Point(46, 225);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(343, 30);
             this.label11.TabIndex = 10;
@@ -150,7 +151,7 @@ namespace pScript
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 268);
+            this.ClientSize = new System.Drawing.Size(419, 282);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -162,6 +163,7 @@ namespace pScript
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HelpWindow";
             this.Text = "HelpWindow";

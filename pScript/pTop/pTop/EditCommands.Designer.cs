@@ -241,7 +241,7 @@ namespace pScript
             this.Controls.Add(this.label2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EditCommands";
-            this.Text = "pScript v1.03 (edit commands)";
+            this.Text = "pScript v1.04 (edit commands)";
             this.ResumeLayout(false);
             this.PerformLayout();
 

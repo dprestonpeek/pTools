@@ -15,7 +15,7 @@ namespace pNotes
 
         public enum FilesOrFolders { Files, Folders, FilesAndFolders }
 
-        public static string version = "pNotes v0.92";
+        public static string version = "pNotes v0.94";
 
         static string[] internalArgs;
         static string singularFile = "";
@@ -137,6 +137,7 @@ namespace pNotes
             Commands.AddCommand("Print History", new string[2] { "his", "uncl" }, "Print collected history", "", Help.hisHelp, PrintHistory);
             //Commands.AddCommand("Open Saved File", new string[2] { "log", "note" }, "Open presaved file", "", OpenSavedFile);
             Commands.AddCommand("Change Path", new string[2] { "path", "where" }, "Print the current path", "Change the path a given directory", Help.pathHelp, DirPath);
+            Commands.AddCommand("Differentiate", new string[2] { "diff", "dif"}, "Prompt for arguments", "Determine whether 2 or more files are identical", Help.diffHelp, DiffFiles);
 
             Commands.AddCommand("Help menu", new string[2] { "help", "hlp" }, "Open this help menu", "Open command help page", Help.helpHelp, PrintHelp);
             Commands.AddCommand("Exit program", new string[1] { "exit" }, "Exit the program", "", Help.exitHelp, null);
@@ -147,6 +148,29 @@ namespace pNotes
             Output.WriteLine(question);
             string answer = Console.ReadLine();
             return answer;
+        }
+
+        static int PromptUserForInt(string prompt)
+        {
+            Output.WriteLine(prompt);
+            string number = "";
+            int numItems = 0;
+            while (!int.TryParse(number, out numItems))
+            {
+                number = Console.ReadLine();
+            }
+            return numItems;
+        }
+
+        static List<string> PromptUserForList(string prompt, int itemsInList)
+        {
+            Output.WriteLine(prompt);
+            List<string> items = new List<string>();
+            for (int i = 0; i < itemsInList; i++)
+            {
+                items.Add(Console.ReadLine());
+            }
+            return items;
         }
 
         static void PrintHelp()
@@ -679,6 +703,234 @@ namespace pNotes
                     {
                         Output.WriteLine(file);
                     }
+                }
+            }
+        }
+
+        static void DiffFiles()
+        {
+            List<string> items = new List<string>();
+            int numItems = -1;
+            bool comparingDirectories = false;
+
+            if (internalArgs.Length == 1)
+            {
+                //Prompt user for all the info
+                string filesOrDirs = PromptUser("Will you be comparing files or directories? (f/d)").ToLower();
+                numItems = PromptUserForInt("How many files would you like to compare? (default = 2)");
+
+                if (filesOrDirs == "f" || filesOrDirs == "files")
+                {
+                    items = PromptUserForList("Enter each file on a separate line:", numItems);
+                }
+                else if (filesOrDirs == "d" || filesOrDirs == "directories" || filesOrDirs == "dirs")
+                {
+                    items = PromptUserForList("Enter each directory on a separate line:", numItems);
+                    comparingDirectories = true;
+                }
+            }
+            else if (internalArgs.Length == 2)
+            {
+                bool multi = false;
+                if (internalArgs[1] == "-d")
+                {
+                    comparingDirectories = true;
+                }
+                else if (internalArgs[1] == "-m")
+                {
+                    multi = true;
+                }
+                else if (internalArgs[1] == "-dm" || internalArgs[1] == "-md")
+                {
+                    comparingDirectories = true;
+                    multi = true;
+                }
+
+                if (comparingDirectories)
+                {
+                    //assume 2 entries if no -m modifier
+                    numItems = 2;
+                    items = PromptUserForList("Enter each directory on a separate line:", numItems);
+                }
+                else if (multi)
+                {
+                    string filesOrDirs = PromptUser("Will you be comparing files or directories? (f/d)").ToLower();
+                    numItems = PromptUserForInt("How many files would you like to compare? (default = 2)");
+                    if (filesOrDirs == "f" || filesOrDirs == "files")
+                    {
+                        items = PromptUserForList("Enter each file on a separate line:", numItems);
+                    }
+                    else if (filesOrDirs == "d" || filesOrDirs == "directories" || filesOrDirs == "dirs")
+                    {
+                        items = PromptUserForList("Enter each directory on a separate line:", numItems);
+                    }
+                }
+                else if (comparingDirectories && multi)
+                {
+                    numItems = PromptUserForInt("How many directories would you like to compare? (default = 2)");
+                    items = PromptUserForList("Enter each directory on a separate line:", numItems);
+                }
+            }
+
+            if (comparingDirectories)
+            {
+                List<string> directories = new List<string>();
+                List<List<string>> filesInDirs = new List<List<string>>();
+                List<List<string>> compare1 = new List<List<string>>();
+                List<List<string>> compare2 = new List<List<string>>();
+
+                directories.AddRange(items);
+                foreach (string dir in directories)
+                {
+                    List<string> files = new List<string>();
+                    files.AddRange(Directory.GetFiles(dir));
+                    filesInDirs.Add(files);
+                }
+                for (int i = 0; i < filesInDirs.Count; i++)
+                {
+                    for (int j = 0; j < filesInDirs.Count; j++)
+                    {
+                        if (i == j) //don't compare the same lists
+                        {
+                            continue;
+                        }
+
+                        bool alreadyCompared = false;
+                        for (int m = 0; m < compare1.Count; m++)
+                        {
+                            if (compare1[m] == filesInDirs[i] || compare1[m] == filesInDirs[j])
+                            {
+                                if (compare2[m] == filesInDirs[i] || compare2[m] == filesInDirs[j])
+                                {
+                                    alreadyCompared = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (alreadyCompared)
+                        {
+                            continue;
+                        }
+
+                        bool different = false;
+                        List<string> longerList = filesInDirs[i];
+                        List<string> shorterList = filesInDirs[j];
+                        if (filesInDirs[j].Count > filesInDirs[i].Count)
+                        {
+                            longerList = filesInDirs[j];
+                            shorterList = filesInDirs[i];
+                            different = true;
+                        }
+
+                        List<string> differentLines1 = new List<string>();
+                        List<string> differentLines2 = new List<string>();
+                        List<int> lineNums = new List<int>();
+                        for (int k = 0; k < shorterList.Count; k++)
+                        {
+                            List<string> filesToCompare = new List<string>();
+                            filesToCompare.Add(longerList[k]);
+                            filesToCompare.Add(shorterList[k]);
+                            DoDiffFiles(filesToCompare);
+                            compare1.Add(longerList);
+                            compare2.Add(shorterList);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                DoDiffFiles(items);
+            }
+        }
+
+        static void DoDiffFiles(List<string> items)
+        {
+            List<string> compare1 = new List<string>();
+            List<string> compare2 = new List<string>();
+
+            //Diff the items
+            for (int i = 0; i < items.Count; i++)
+            {
+                string[] file1 = File.ReadAllLines(items[i]);
+                for (int j = 0; j < items.Count; j++)
+                {
+                    if (i == j) //don't compare the same elements
+                    {
+                        continue;
+                    }
+                    string[] file2 = File.ReadAllLines(items[j]);
+
+                    bool alreadyCompared = false;
+                    for (int m = 0; m < compare1.Count; m++)
+                    {
+                        if (compare1[m] == items[i] || compare1[m] == items[j])
+                        {
+                            if (compare2[m] == items[i] || compare2[m] == items[j])
+                            {
+                                alreadyCompared = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (alreadyCompared)
+                    {
+                        continue;
+                    }
+                    //Output.PrintHorizontalBarrier();
+                    Console.WriteLine("\nComparing file \"" + items[i] + "\" against file \"" + items[j] + "\"");
+                    compare1.Add(items[i]);
+                    compare2.Add(items[j]);
+
+                    bool different = false;
+                    List<string> differentLines1 = new List<string>();
+                    List<string> differentLines2 = new List<string>();
+                    List<int> lineNums = new List<int>();
+                    string[] longerFile = file1;
+                    string[] shorterFile = file2;
+                    if (file2.Length > file1.Length)
+                    {
+                        longerFile = file2;
+                        shorterFile = file1;
+                        different = true;
+                    }
+
+                    for (int k = 0; k < shorterFile.Length; k++)
+                    {
+                        try
+                        {
+                            int compare = string.Compare(longerFile[k], shorterFile[k]);
+                            if (compare != 0)
+                            {
+                                different = true;
+                                lineNums.Add(k);
+                                differentLines1.Add(longerFile[k]);
+                                differentLines2.Add(shorterFile[k]);
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Output.WriteLine("String comparison failed. Please double check your filenames. Error: " + ex.Message);
+                        }
+                    }
+                    if (different)
+                    {
+                        Output.WriteLine("\"" + items[i] + "\" differs from \"" + items[j] + "\" in " + differentLines1 + " places.\n");
+                        //Output.PrintHorizontalBarrier();
+
+                        for (int l = 0; l < differentLines1.Count; l++)
+                        {
+                            Output.WriteLine("[" + lineNums[l] + "]" + "\"" + items[i] + "\"");
+                            Output.WriteLine(differentLines1[l] + "\n");
+                            Output.WriteLine("[" + lineNums[l] + "]" + "\"" + items[j] + "\"");
+                            Output.WriteLine(differentLines2[l] + "\n");
+                        }
+                    }
+                    else
+                    {
+                        Output.WriteLine("\"" + items[i] + "\" is identical to \"" + items[j] + "\".\n");
+                    }
+                    Output.PrintHorizontalBarrier();
                 }
             }
         }

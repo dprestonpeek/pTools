@@ -46,6 +46,12 @@ namespace pNotes
         public static string pathHelp = "View or Change the current working directory.\n\n" +
             "Examples:\n'path' prints the current directory.\n" +
             "'path C:\\Users\\user\\Documents' changes the current working directory to C:\\Users\\user\\Documents.";
+        public static string diffHelp = "Determine whether 2 or more files are identical.\n\n" +
+            "Modifiers:\n'-d' indicates the arguments provided are directories, not files.\n" +
+            "'-m' indicates there are more than 2 files or directories to search.\n\n" +
+            "Examples:\n'diff' will prompt for files to compare.\n" +
+            "'diff C:\\Users\\user\\Documents\\file1.txt C:\\Users\\user\\Documents\\file2.txt' will compare file1.txt and file2.txt and print the differences.\n" +
+            "'diff C:\\Users\\user\\Documents\\dir1 C:\\Users\\user\\Documents\\dir2 -d' will compare all files in both directories (assuming they should be identical) and print which files differ.";
         public static string helpHelp = "Opens the Help Overview page.\n\n" +
             "Examples:\n'help' opens the Help Overview page.\n" +
             "'help help' opens this Help page for the Help command.";
