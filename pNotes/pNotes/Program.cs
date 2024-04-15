@@ -712,6 +712,7 @@ namespace pNotes
             List<string> items = new List<string>();
             int numItems = -1;
             bool comparingDirectories = false;
+            bool silent = false;
 
             if (internalArgs.Length == 1)
             {
@@ -739,11 +740,13 @@ namespace pNotes
                 else if (internalArgs[1] == "-m")
                 {
                     multi = true;
+                    silent = true;
                 }
                 else if (internalArgs[1] == "-dm" || internalArgs[1] == "-md")
                 {
                     comparingDirectories = true;
                     multi = true;
+                    silent = true;
                 }
 
                 if (comparingDirectories)
@@ -851,7 +854,7 @@ namespace pNotes
                             List<string> filesToCompare = new List<string>();
                             filesToCompare.Add(longerList[fileToCompareIndex]);
                             filesToCompare.Add(shorterList[k]);
-                            DoDiffFiles(filesToCompare);
+                            DoDiffFiles(filesToCompare, silent);
                             compare1.Add(longerList);
                             compare2.Add(shorterList);
                         }
@@ -860,11 +863,11 @@ namespace pNotes
             }
             else
             {
-                DoDiffFiles(items);
+                DoDiffFiles(items, silent);
             }
         }
 
-        static void DoDiffFiles(List<string> items)
+        static void DoDiffFiles(List<string> items, bool silent)
         {
             List<string> compare1 = new List<string>();
             List<string> compare2 = new List<string>();
@@ -898,7 +901,10 @@ namespace pNotes
                         continue;
                     }
                     //Output.PrintHorizontalBarrier();
-                    Console.WriteLine("\nComparing file \"" + items[i] + "\" against file \"" + items[j] + "\"");
+                    if (!silent)
+                    {
+                        Console.WriteLine("\nComparing file \"" + items[i] + "\" against file \"" + items[j] + "\"");
+                    }
                     compare1.Add(items[i]);
                     compare2.Add(items[j]);
 
@@ -945,11 +951,15 @@ namespace pNotes
                             Output.WriteLine(differentLines1[l] + "\n");
                             Output.WriteLine("[" + lineNums[l] + "]" + "\"" + items[j] + "\"");
                             Output.WriteLine(differentLines2[l] + "\n");
+                            Output.PrintHorizontalBarrier();
                         }
                     }
                     else
                     {
-                        Output.WriteLine("\"" + items[i] + "\" is identical to \"" + items[j] + "\".\n");
+                        if (!silent)
+                        {
+                            Output.WriteLine("\"" + items[i] + "\" is identical to \"" + items[j] + "\".\n");
+                        }
                     }
                     Output.PrintHorizontalBarrier();
                 }
