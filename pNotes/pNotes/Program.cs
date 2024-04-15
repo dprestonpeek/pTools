@@ -821,14 +821,35 @@ namespace pNotes
                             shorterList = filesInDirs[i];
                             different = true;
                         }
+                        List<string> longerFilenames = new List<string>();
+                        List<string> shorterFilenames = new List<string>();
 
-                        List<string> differentLines1 = new List<string>();
-                        List<string> differentLines2 = new List<string>();
-                        List<int> lineNums = new List<int>();
-                        for (int k = 0; k < shorterList.Count; k++)
+                        foreach (string file in longerList)
                         {
+                            longerFilenames.Add(Path.GetFileName(file));
+                        }
+                        foreach (string file in shorterList)
+                        {
+                            shorterFilenames.Add(Path.GetFileName(file));
+                        }
+
+                        for (int l = 0; l < shorterFilenames.Count; l++)
+                        {
+                            if (!longerFilenames.Contains(shorterFilenames[l]))
+                            {
+                                shorterFilenames.RemoveAt(l);
+                            }
+                        }
+
+                        for (int k = 0; k < shorterFilenames.Count; k++)
+                        {
+                            int fileToCompareIndex = longerFilenames.IndexOf(shorterFilenames[k]);
+                            if (fileToCompareIndex == -1)
+                            {
+                                continue;
+                            }
                             List<string> filesToCompare = new List<string>();
-                            filesToCompare.Add(longerList[k]);
+                            filesToCompare.Add(longerList[fileToCompareIndex]);
                             filesToCompare.Add(shorterList[k]);
                             DoDiffFiles(filesToCompare);
                             compare1.Add(longerList);
