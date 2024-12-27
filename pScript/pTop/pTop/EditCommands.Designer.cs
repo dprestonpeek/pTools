@@ -84,6 +84,7 @@ namespace pScript
             this.TogglableCheckbox.Text = "This action is togglable";
             this.TogglableCheckbox.UseVisualStyleBackColor = true;
             this.TogglableCheckbox.CheckedChanged += new System.EventHandler(this.TogglableCheckbox_CheckedChanged);
+            this.TogglableCheckbox.Visible = false;
             // 
             // label2
             // 

@@ -30,6 +30,19 @@ namespace pScript
             FlashTimer.Enabled = true;
         }
 
+        private void InitializeComponent()
+        {
+            SuspendLayout();
+            // 
+            // FlashAnim
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            ClientSize = new Size(479, 311);
+            Name = "FlashAnim";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
         private void FlashTick(object sender, EventArgs e)
         {
             if (timer < reps)

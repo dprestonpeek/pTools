@@ -36,7 +36,8 @@ namespace pScript
             {
                 if (cmd.displayText.Equals(commandName))
                 {
-                    if (cmd.togglable)
+                    //Run any features
+                    if (Features.ScriptHasFeatures(cmd.commandText))
                     {
                         cmd.isOn = !cmd.isOn;
                     }
