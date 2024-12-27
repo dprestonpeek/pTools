@@ -30,7 +30,34 @@ namespace pScript
 
         static string scriptFile = "script.bat";
 
-        public static void FireCommand(string commandName)
+        public static Command GetCommand(string displayText)
+        {
+            foreach (Command cmd in commandList)
+            {
+                if (cmd.displayText.Equals(displayText))
+                {
+                    return cmd;
+                }
+            }
+            return null;
+        }
+        
+        
+        public static void FireCommandByString(string commandStr)
+        {
+            foreach (Command command in commandList)
+            {
+                string displayName = command.displayText;
+                if (displayName == commandStr)
+                {
+                    //Do command here
+                    FireCommand(displayName);
+                }
+            }
+        }
+
+
+        private static void FireCommand(string commandName)
         {
             foreach (Command cmd in commandList)
             {
@@ -48,18 +75,6 @@ namespace pScript
                     Process.Start(p);
                 }
             }
-        }
-
-        public static Command GetCommand(string displayText)
-        {
-            foreach (Command cmd in commandList)
-            {
-                if (cmd.displayText.Equals(displayText))
-                {
-                    return cmd;
-                }
-            }
-            return null;
         }
     }
 }

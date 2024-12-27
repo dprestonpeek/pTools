@@ -29,230 +29,221 @@ namespace pScript
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditCommands));
-            this.label1 = new System.Windows.Forms.Label();
-            this.CommandList = new System.Windows.Forms.ListBox();
-            this.TogglableCheckbox = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.CommandTextBox = new System.Windows.Forms.RichTextBox();
-            this.DisplayTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.OKButton = new System.Windows.Forms.Button();
-            this.SaveButton = new System.Windows.Forms.Button();
-            this.ReorderDown = new System.Windows.Forms.Button();
-            this.ReorderUp = new System.Windows.Forms.Button();
-            this.AddButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
-            this.SaveChanges = new System.Windows.Forms.Label();
-            this.FlashTimer = new System.Windows.Forms.Timer(this.components);
-            this.HelpButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            CommandList = new System.Windows.Forms.ListBox();
+            label2 = new System.Windows.Forms.Label();
+            CommandTextBox = new System.Windows.Forms.RichTextBox();
+            DisplayTextBox = new System.Windows.Forms.TextBox();
+            label3 = new System.Windows.Forms.Label();
+            OKButton = new System.Windows.Forms.Button();
+            SaveButton = new System.Windows.Forms.Button();
+            ReorderDown = new System.Windows.Forms.Button();
+            ReorderUp = new System.Windows.Forms.Button();
+            AddButton = new System.Windows.Forms.Button();
+            DeleteButton = new System.Windows.Forms.Button();
+            SaveChanges = new System.Windows.Forms.Label();
+            FlashTimer = new System.Windows.Forms.Timer(components);
+            HelpButton = new System.Windows.Forms.Button();
+            RunButton = new System.Windows.Forms.Button();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(276, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Commands:";
+            label1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(276, 15);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(72, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Commands:";
             // 
             // CommandList
             // 
-            this.CommandList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CommandList.FormattingEnabled = true;
-            this.CommandList.ItemHeight = 15;
-            this.CommandList.Location = new System.Drawing.Point(276, 31);
-            this.CommandList.Name = "CommandList";
-            this.CommandList.Size = new System.Drawing.Size(191, 244);
-            this.CommandList.TabIndex = 2;
-            this.CommandList.SelectedIndexChanged += new System.EventHandler(this.CommandList_SelectedIndexChanged);
-            // 
-            // TogglableCheckbox
-            // 
-            this.TogglableCheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TogglableCheckbox.AutoSize = true;
-            this.TogglableCheckbox.Enabled = false;
-            this.TogglableCheckbox.Location = new System.Drawing.Point(12, 280);
-            this.TogglableCheckbox.Name = "TogglableCheckbox";
-            this.TogglableCheckbox.Size = new System.Drawing.Size(147, 19);
-            this.TogglableCheckbox.TabIndex = 9;
-            this.TogglableCheckbox.Text = "This action is togglable";
-            this.TogglableCheckbox.UseVisualStyleBackColor = true;
-            this.TogglableCheckbox.CheckedChanged += new System.EventHandler(this.TogglableCheckbox_CheckedChanged);
-            this.TogglableCheckbox.Visible = false;
+            CommandList.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            CommandList.FormattingEnabled = true;
+            CommandList.ItemHeight = 15;
+            CommandList.Location = new System.Drawing.Point(276, 31);
+            CommandList.Name = "CommandList";
+            CommandList.Size = new System.Drawing.Size(191, 244);
+            CommandList.TabIndex = 2;
+            CommandList.SelectedIndexChanged += CommandList_SelectedIndexChanged;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 15);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Command Text:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(12, 59);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(91, 15);
+            label2.TabIndex = 8;
+            label2.Text = "Command Text:";
             // 
             // CommandTextBox
             // 
-            this.CommandTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CommandTextBox.Enabled = false;
-            this.CommandTextBox.Location = new System.Drawing.Point(12, 77);
-            this.CommandTextBox.Name = "CommandTextBox";
-            this.CommandTextBox.Size = new System.Drawing.Size(258, 197);
-            this.CommandTextBox.TabIndex = 7;
-            this.CommandTextBox.Text = "";
-            this.CommandTextBox.TextChanged += new System.EventHandler(this.CommandTextBox_TextChanged);
+            CommandTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            CommandTextBox.Enabled = false;
+            CommandTextBox.Location = new System.Drawing.Point(12, 77);
+            CommandTextBox.Name = "CommandTextBox";
+            CommandTextBox.Size = new System.Drawing.Size(258, 197);
+            CommandTextBox.TabIndex = 7;
+            CommandTextBox.Text = "";
+            CommandTextBox.TextChanged += CommandTextBox_TextChanged;
             // 
             // DisplayTextBox
             // 
-            this.DisplayTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DisplayTextBox.Enabled = false;
-            this.DisplayTextBox.Location = new System.Drawing.Point(12, 33);
-            this.DisplayTextBox.Name = "DisplayTextBox";
-            this.DisplayTextBox.Size = new System.Drawing.Size(258, 23);
-            this.DisplayTextBox.TabIndex = 6;
-            this.DisplayTextBox.TextChanged += new System.EventHandler(this.DisplayTextBox_TextChanged);
+            DisplayTextBox.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            DisplayTextBox.Enabled = false;
+            DisplayTextBox.Location = new System.Drawing.Point(12, 33);
+            DisplayTextBox.Name = "DisplayTextBox";
+            DisplayTextBox.Size = new System.Drawing.Size(258, 23);
+            DisplayTextBox.TabIndex = 6;
+            DisplayTextBox.TextChanged += DisplayTextBox_TextChanged;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 15);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Display Text:";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(12, 15);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(72, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Display Text:";
             // 
             // OKButton
             // 
-            this.OKButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.OKButton.Location = new System.Drawing.Point(393, 281);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(75, 23);
-            this.OKButton.TabIndex = 11;
-            this.OKButton.Text = "Close";
-            this.OKButton.UseVisualStyleBackColor = true;
-            this.OKButton.Click += new System.EventHandler(this.OKButton_Click);
+            OKButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            OKButton.Location = new System.Drawing.Point(393, 281);
+            OKButton.Name = "OKButton";
+            OKButton.Size = new System.Drawing.Size(75, 23);
+            OKButton.TabIndex = 11;
+            OKButton.Text = "Close";
+            OKButton.UseVisualStyleBackColor = true;
+            OKButton.Click += OKButton_Click;
             // 
             // SaveButton
             // 
-            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.Enabled = false;
-            this.SaveButton.Location = new System.Drawing.Point(195, 280);
-            this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 10;
-            this.SaveButton.Text = "Save";
-            this.SaveButton.UseVisualStyleBackColor = true;
-            this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
+            SaveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            SaveButton.Enabled = false;
+            SaveButton.Location = new System.Drawing.Point(195, 280);
+            SaveButton.Name = "SaveButton";
+            SaveButton.Size = new System.Drawing.Size(75, 23);
+            SaveButton.TabIndex = 10;
+            SaveButton.Text = "Save";
+            SaveButton.UseVisualStyleBackColor = true;
+            SaveButton.Click += SaveButton_Click;
             // 
             // ReorderDown
             // 
-            this.ReorderDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReorderDown.Location = new System.Drawing.Point(354, 7);
-            this.ReorderDown.Name = "ReorderDown";
-            this.ReorderDown.Size = new System.Drawing.Size(23, 23);
-            this.ReorderDown.TabIndex = 12;
-            this.ReorderDown.Text = "↓";
-            this.ReorderDown.UseVisualStyleBackColor = true;
-            this.ReorderDown.Click += new System.EventHandler(this.ReorderDown_Click);
+            ReorderDown.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            ReorderDown.Location = new System.Drawing.Point(354, 7);
+            ReorderDown.Name = "ReorderDown";
+            ReorderDown.Size = new System.Drawing.Size(23, 23);
+            ReorderDown.TabIndex = 12;
+            ReorderDown.Text = "↓";
+            ReorderDown.UseVisualStyleBackColor = true;
+            ReorderDown.Click += ReorderDown_Click;
             // 
             // ReorderUp
             // 
-            this.ReorderUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReorderUp.Location = new System.Drawing.Point(379, 7);
-            this.ReorderUp.Name = "ReorderUp";
-            this.ReorderUp.Size = new System.Drawing.Size(23, 23);
-            this.ReorderUp.TabIndex = 13;
-            this.ReorderUp.Text = "↑";
-            this.ReorderUp.UseVisualStyleBackColor = true;
-            this.ReorderUp.Click += new System.EventHandler(this.ReorderUp_Click);
+            ReorderUp.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            ReorderUp.Location = new System.Drawing.Point(379, 7);
+            ReorderUp.Name = "ReorderUp";
+            ReorderUp.Size = new System.Drawing.Size(23, 23);
+            ReorderUp.TabIndex = 13;
+            ReorderUp.Text = "↑";
+            ReorderUp.UseVisualStyleBackColor = true;
+            ReorderUp.Click += ReorderUp_Click;
             // 
             // AddButton
             // 
-            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddButton.Location = new System.Drawing.Point(445, 7);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(23, 23);
-            this.AddButton.TabIndex = 14;
-            this.AddButton.Text = "+";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            AddButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            AddButton.Location = new System.Drawing.Point(445, 7);
+            AddButton.Name = "AddButton";
+            AddButton.Size = new System.Drawing.Size(23, 23);
+            AddButton.TabIndex = 14;
+            AddButton.Text = "+";
+            AddButton.UseVisualStyleBackColor = true;
+            AddButton.Click += AddButton_Click;
             // 
             // DeleteButton
             // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.Location = new System.Drawing.Point(420, 7);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(23, 23);
-            this.DeleteButton.TabIndex = 15;
-            this.DeleteButton.Text = "-";
-            this.DeleteButton.UseVisualStyleBackColor = true;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            DeleteButton.Location = new System.Drawing.Point(420, 7);
+            DeleteButton.Name = "DeleteButton";
+            DeleteButton.Size = new System.Drawing.Size(23, 23);
+            DeleteButton.TabIndex = 15;
+            DeleteButton.Text = "-";
+            DeleteButton.UseVisualStyleBackColor = true;
+            DeleteButton.Click += DeleteButton_Click;
             // 
             // SaveChanges
             // 
-            this.SaveChanges.AutoSize = true;
-            this.SaveChanges.ForeColor = System.Drawing.Color.Red;
-            this.SaveChanges.Location = new System.Drawing.Point(302, 284);
-            this.SaveChanges.Name = "SaveChanges";
-            this.SaveChanges.Size = new System.Drawing.Size(85, 15);
-            this.SaveChanges.TabIndex = 16;
-            this.SaveChanges.Text = "Save Changes?";
-            this.SaveChanges.Visible = false;
+            SaveChanges.AutoSize = true;
+            SaveChanges.ForeColor = System.Drawing.Color.Red;
+            SaveChanges.Location = new System.Drawing.Point(302, 284);
+            SaveChanges.Name = "SaveChanges";
+            SaveChanges.Size = new System.Drawing.Size(85, 15);
+            SaveChanges.TabIndex = 16;
+            SaveChanges.Text = "Save Changes?";
+            SaveChanges.Visible = false;
             // 
             // FlashTimer
             // 
-            this.FlashTimer.Interval = 10;
+            FlashTimer.Interval = 10;
             // 
             // HelpButton
             // 
-            this.HelpButton.Location = new System.Drawing.Point(195, 7);
-            this.HelpButton.Name = "HelpButton";
-            this.HelpButton.Size = new System.Drawing.Size(75, 23);
-            this.HelpButton.TabIndex = 17;
-            this.HelpButton.Text = "Help";
-            this.HelpButton.UseVisualStyleBackColor = true;
-            this.HelpButton.Click += new System.EventHandler(this.HelpButton_Click);
+            HelpButton.Location = new System.Drawing.Point(195, 7);
+            HelpButton.Name = "HelpButton";
+            HelpButton.Size = new System.Drawing.Size(75, 23);
+            HelpButton.TabIndex = 17;
+            HelpButton.Text = "Help";
+            HelpButton.UseVisualStyleBackColor = true;
+            HelpButton.Click += HelpButton_Click;
+            // 
+            // RunButton
+            // 
+            RunButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
+            RunButton.Enabled = false;
+            RunButton.Location = new System.Drawing.Point(12, 280);
+            RunButton.Name = "RunButton";
+            RunButton.Size = new System.Drawing.Size(75, 23);
+            RunButton.TabIndex = 18;
+            RunButton.Text = "Run";
+            RunButton.UseVisualStyleBackColor = true;
+            RunButton.Click += RunButton_Click;
             // 
             // EditCommands
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(479, 311);
-            this.Controls.Add(this.HelpButton);
-            this.Controls.Add(this.SaveChanges);
-            this.Controls.Add(this.TogglableCheckbox);
-            this.Controls.Add(this.DeleteButton);
-            this.Controls.Add(this.AddButton);
-            this.Controls.Add(this.ReorderUp);
-            this.Controls.Add(this.ReorderDown);
-            this.Controls.Add(this.OKButton);
-            this.Controls.Add(this.SaveButton);
-            this.Controls.Add(this.CommandTextBox);
-            this.Controls.Add(this.DisplayTextBox);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.CommandList);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "EditCommands";
-            this.Text = "pScript v1.04 (edit commands)";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(479, 311);
+            Controls.Add(RunButton);
+            Controls.Add(HelpButton);
+            Controls.Add(SaveChanges);
+            Controls.Add(DeleteButton);
+            Controls.Add(AddButton);
+            Controls.Add(ReorderUp);
+            Controls.Add(ReorderDown);
+            Controls.Add(OKButton);
+            Controls.Add(SaveButton);
+            Controls.Add(CommandTextBox);
+            Controls.Add(DisplayTextBox);
+            Controls.Add(label3);
+            Controls.Add(CommandList);
+            Controls.Add(label1);
+            Controls.Add(label2);
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Name = "EditCommands";
+            Text = "pScript v1.04 (edit commands)";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox CommandList;
-        public System.Windows.Forms.CheckBox TogglableCheckbox;
         private System.Windows.Forms.Label label2;
         public System.Windows.Forms.RichTextBox CommandTextBox;
         public System.Windows.Forms.TextBox DisplayTextBox;
@@ -266,5 +257,6 @@ namespace pScript
         private System.Windows.Forms.Label SaveChanges;
         public System.Windows.Forms.Timer FlashTimer;
         private System.Windows.Forms.Button HelpButton;
+        private System.Windows.Forms.Button RunButton;
     }
 }

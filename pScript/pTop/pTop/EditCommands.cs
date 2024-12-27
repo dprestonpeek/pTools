@@ -65,11 +65,10 @@ namespace pScript
             {
                 DisplayTextBox.Enabled = true;
                 CommandTextBox.Enabled = true;
-                TogglableCheckbox.Enabled = true;
                 SaveButton.Enabled = true;
+                RunButton.Enabled = true;
                 DisplayTextBox.Text = "";
                 CommandTextBox.Text = "";
-                TogglableCheckbox.Checked = false;
                 ReorderUp.Enabled = true;
                 ReorderDown.Enabled = true;
             }
@@ -79,11 +78,10 @@ namespace pScript
         {
             DisplayTextBox.Enabled = false;
             CommandTextBox.Enabled = false;
-            TogglableCheckbox.Enabled = false;
             SaveButton.Enabled = false;
+            RunButton.Enabled = false;
             DisplayTextBox.Text = "";
             CommandTextBox.Text = "";
-            TogglableCheckbox.Checked = false;
             ReorderUp.Enabled = false;
             ReorderDown.Enabled = false;
             editing = false;
@@ -96,13 +94,11 @@ namespace pScript
                 Command selectedCommand = Commands.commandList[CommandList.SelectedIndex];
                 DisplayTextBox.Text = selectedCommand.displayText;
                 CommandTextBox.Text = selectedCommand.commandText;
-                TogglableCheckbox.Checked = selectedCommand.togglable;
             }
             else
             {
                 DisplayTextBox.Text = "";
                 CommandTextBox.Text = "";
-                TogglableCheckbox.Checked = false;
             }
         }
 
@@ -117,7 +113,6 @@ namespace pScript
             editing = false;
             displayText = DisplayTextBox.Text;
             commandText = CommandTextBox.Text;
-            togglable = TogglableCheckbox.Checked;
             if (adding)
             {
                 adding = false;
@@ -216,6 +211,11 @@ namespace pScript
         private void HelpButton_Click(object sender, EventArgs e)
         {
             new HelpWindow().Show();
+        }
+
+        private void RunButton_Click(object sender, EventArgs e)
+        {
+            Commands.FireCommandByString(DisplayTextBox.Text);
         }
     }
 }

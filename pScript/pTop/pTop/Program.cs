@@ -204,6 +204,7 @@ namespace pScript
 
         private static void ClickedItem(object sender, EventArgs e)
         {
+            //Check if option was "Edit" or "Quit"
             ToolStripMenuItem option = (ToolStripMenuItem)sender;
             if (option.Name == "Edit")
             {
@@ -226,13 +227,14 @@ namespace pScript
                 return;
             }
 
+            //Fire using the Command obj
             foreach (Command command in Commands.commandList)
             {
                 string displayName = command.displayText;
                 if (displayName == option.Text)
                 {
                     //Do command here
-                    Commands.FireCommand(displayName);
+                    Commands.FireCommandByString(displayName);
                 }
             }
         }
