@@ -216,6 +216,7 @@ namespace pScript
                 }
                 else
                 {
+                    editCmdsWindow.WindowState = FormWindowState.Normal;
                     editCmdsWindow.Focus();
                 }
             }
