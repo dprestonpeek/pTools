@@ -29,161 +29,143 @@ namespace pScript
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Child Node");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Child Node");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Child Node");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode(">>Parent Node", new System.Windows.Forms.TreeNode[] { treeNode3 });
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Child Node");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("><Aunt Node", new System.Windows.Forms.TreeNode[] { treeNode5 });
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode(">>Parent Node (Root)", new System.Windows.Forms.TreeNode[] { treeNode1, treeNode2, treeNode4, treeNode6 });
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("><< Grand Node (Root)");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HelpWindow));
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            ExampleTree = new System.Windows.Forms.TreeView();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(341, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Preceed the name of your command with one of these options.";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(388, 30);
+            label1.TabIndex = 0;
+            label1.Text = "Preceed the name of your command with one of these options.\r\nWhen adding nodes, the relationship context reads from top to bottom. ";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(46, 35);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(361, 30);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Indicates the current node is a parent. All subsequent nodes will be \r\nchildren u" +
-    "nless otherwise specified.";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(46, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(352, 30);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Indicates the current node is a new non-parent node. The current \r\nsubmenu will b" +
-    "e closed.";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(46, 64);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(341, 30);
+            label2.TabIndex = 1;
+            label2.Text = "Parent Node - All subsequent nodes will be Child Nodes unless \r\notherwise specified.";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(23, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = ">>";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 75);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(23, 15);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "<<";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 116);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(23, 15);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "<>";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(46, 116);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(357, 45);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Indicates the current node is the last node in the current submenu,\r\nbut also a n" +
-    "ew parent node. All subsequent nodes will be children \r\nunless otherwise specifi" +
-    "ed.";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(12, 64);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(23, 15);
+            label4.TabIndex = 3;
+            label4.Text = ">>";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 167);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(23, 15);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "><";
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(12, 133);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(23, 15);
+            label8.TabIndex = 7;
+            label8.Text = "><";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(46, 167);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(369, 45);
-            this.label9.TabIndex = 8;
-            this.label9.Text = resources.GetString("label9.Text");
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(46, 133);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(338, 45);
+            label9.TabIndex = 8;
+            label9.Text = "Aunt Node - The current submenu will be closed and this node\r\n will be up one layer from the previous. All subsequent nodes \r\nwill be Child Nodes unless otherwise specified.";
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(5, 225);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 15);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "><<...";
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(5, 215);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(40, 15);
+            label10.TabIndex = 9;
+            label10.Text = "><<...";
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(46, 225);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(343, 30);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Indicates the same as \'><\' but adding an additional \'<\' for each \r\nadditional sub" +
-    "menu to be closed.";
+            label11.AutoSize = true;
+            label11.Location = new System.Drawing.Point(46, 215);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(351, 45);
+            label11.TabIndex = 10;
+            label11.Text = "Grand Node - For each '<' symbol, one submenu will be closed\r\nand this node will be up that many layers from the previous. All \r\nsubsequent nodes will be Child Nodes unless otherwise specified.";
+            // 
+            // ExampleTree
+            // 
+            ExampleTree.ItemHeight = 30;
+            ExampleTree.Location = new System.Drawing.Point(405, 12);
+            ExampleTree.Name = "ExampleTree";
+            treeNode1.Name = "Node1";
+            treeNode1.Text = "Child Node";
+            treeNode2.Name = "Node2";
+            treeNode2.Text = "Child Node";
+            treeNode3.Name = "Node5";
+            treeNode3.Text = "Child Node";
+            treeNode4.Name = "Node4";
+            treeNode4.Text = ">>Parent Node";
+            treeNode5.Name = "Node6";
+            treeNode5.Text = "Child Node";
+            treeNode6.Name = "Node3";
+            treeNode6.Text = "><Aunt Node";
+            treeNode7.Name = "Node0";
+            treeNode7.Text = ">>Parent Node (Root)";
+            treeNode8.Name = "Node7";
+            treeNode8.Text = "><< Grand Node (Root)";
+            ExampleTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] { treeNode7, treeNode8 });
+            ExampleTree.Size = new System.Drawing.Size(214, 258);
+            ExampleTree.TabIndex = 11;
             // 
             // HelpWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 282);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "HelpWindow";
-            this.Text = "HelpWindow";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(631, 282);
+            Controls.Add(ExampleTree);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label9);
+            Controls.Add(label8);
+            Controls.Add(label4);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
+            Name = "HelpWindow";
+            Text = "Help";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TreeView ExampleTree;
     }
 }

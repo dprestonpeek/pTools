@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace pScript
 {
@@ -30,7 +31,7 @@ namespace pScript
 
         static string scriptFile = "script.bat";
 
-        public static Command GetCommand(string displayText)
+        public static Command GetCommandByString(string displayText)
         {
             foreach (Command cmd in commandList)
             {
@@ -41,9 +42,21 @@ namespace pScript
             }
             return null;
         }
+
+        public static bool SetCommandByString(string displayText, Command newCommand)
+        {
+            for (int i = 0; i < commandList.Count; i++)
+            {
+                if (commandList[i].displayText.Equals(displayText))
+                {
+                    commandList[i] = newCommand;
+                    return true;
+                }
+            }
+            return false;
+        }
         
-        
-        public static void FireCommandByString(string commandStr)
+        public static bool FireCommandByString(string commandStr)
         {
             foreach (Command command in commandList)
             {
@@ -52,8 +65,10 @@ namespace pScript
                 {
                     //Do command here
                     FireCommand(displayName);
+                    return true;
                 }
             }
+            return false;
         }
 
 

@@ -15,6 +15,7 @@ namespace pScript
         public HelpWindow()
         {
             InitializeComponent();
+            ExampleTree.ExpandAll();
         }
     }
 }

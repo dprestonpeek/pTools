@@ -47,6 +47,7 @@ namespace pScript
             FlashTimer = new System.Windows.Forms.Timer(components);
             HelpButton = new System.Windows.Forms.Button();
             RunButton = new System.Windows.Forms.Button();
+            CommandTree = new System.Windows.Forms.TreeView();
             SuspendLayout();
             // 
             // label1
@@ -66,8 +67,9 @@ namespace pScript
             CommandList.ItemHeight = 15;
             CommandList.Location = new System.Drawing.Point(276, 31);
             CommandList.Name = "CommandList";
-            CommandList.Size = new System.Drawing.Size(191, 244);
+            CommandList.Size = new System.Drawing.Size(191, 79);
             CommandList.TabIndex = 2;
+            CommandList.Visible = false;
             CommandList.SelectedIndexChanged += CommandList_SelectedIndexChanged;
             // 
             // label2
@@ -213,11 +215,23 @@ namespace pScript
             RunButton.UseVisualStyleBackColor = true;
             RunButton.Click += RunButton_Click;
             // 
+            // CommandTree
+            // 
+            CommandTree.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
+            CommandTree.FullRowSelect = true;
+            CommandTree.HideSelection = false;
+            CommandTree.Location = new System.Drawing.Point(276, 31);
+            CommandTree.Name = "CommandTree";
+            CommandTree.Size = new System.Drawing.Size(191, 243);
+            CommandTree.TabIndex = 19;
+            CommandTree.AfterSelect += CommandTree_AfterSelect;
+            // 
             // EditCommands
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(479, 311);
+            Controls.Add(CommandTree);
             Controls.Add(RunButton);
             Controls.Add(HelpButton);
             Controls.Add(SaveChanges);
@@ -235,7 +249,7 @@ namespace pScript
             Controls.Add(label2);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "EditCommands";
-            Text = "pScript v1.04 (edit commands)";
+            Text = "pScript v1.1 (edit commands)";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -258,5 +272,6 @@ namespace pScript
         public System.Windows.Forms.Timer FlashTimer;
         private System.Windows.Forms.Button HelpButton;
         private System.Windows.Forms.Button RunButton;
+        public System.Windows.Forms.TreeView CommandTree;
     }
 }
