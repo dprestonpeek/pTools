@@ -34,12 +34,6 @@ namespace pScript
 
         private void RefreshList()
         {
-            //CommandList.Items.Clear();
-            //foreach (Command cmd in Commands.commandList)
-            //{
-            //    CommandList.Items.Add(cmd.displayText);
-            //}
-
             List<TreeNode> parents = new List<TreeNode>();
 
             CommandTree.Nodes.Clear();
@@ -89,34 +83,10 @@ namespace pScript
 
         private void CommandList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //EnableDisableEditing();
-            //if (adding)
-            //{
-            //    //CommandList.Items.RemoveAt(CommandList.SelectedIndex);
-            //    adding = false;
-            //}
-            //else if (aboutToAdd)
-            //{
-            //    adding = true;
-            //    aboutToAdd = false;
-            //}
-            //else
-            //{
-            //    UpdateUI();
-            //}
         }
 
         private void EnableDisableEditing()
         {
-            //if (CommandList.SelectedIndex == -1)
-            //{
-            //    DisableEditing();
-            //}
-            //else
-            //{
-            //    EnableEditing();
-            //}
-
             if (CommandTree.SelectedNode == null)
             {
                 DisableEditing();
@@ -154,18 +124,6 @@ namespace pScript
 
         private void UpdateUI()
         {
-            //if (CommandList.SelectedIndex > -1)
-            //{
-            //    Command selectedCommand = Commands.commandList[CommandList.SelectedIndex];
-            //    DisplayTextBox.Text = selectedCommand.displayText;
-            //    CommandTextBox.Text = selectedCommand.commandText;
-            //}
-            //else
-            //{
-            //    DisplayTextBox.Text = "";
-            //    CommandTextBox.Text = "";
-            //}
-
             if (CommandTree.SelectedNode != null)
             {
                 Command selectedCommand = Commands.GetCommandByString(CommandTree.SelectedNode.Text);
@@ -193,11 +151,9 @@ namespace pScript
             if (adding)
             {
                 adding = false;
-                //CommandList.Items[CommandList.SelectedIndex] = displayText;
                 CommandTree.SelectedNode = GetNodeByString(displayText);
             }
             Command newCommand = new Command(displayText, commandText, togglable);
-            //Commands.commandList[CommandList.SelectedIndex] = newCommand;
             Commands.SetCommandByString(displayText, newCommand);
 
             Program.SaveCommands();
@@ -236,6 +192,7 @@ namespace pScript
             }
             RefreshList();
             CommandTree.SelectedNode = GetNodeByString(newNode.Text);
+            UpdateUI();
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -289,7 +246,6 @@ namespace pScript
                 Commands.commandList[index] = temp;
                 RefreshList();
                 DisableEditing();
-                //CommandList.SelectedIndex = prevSelected + 1;
                 CommandTree.SelectedNode = GetNodeByString(Commands.commandList[prevSelected + 1].displayText);
             }
         }
@@ -386,8 +342,8 @@ namespace pScript
             EnableDisableEditing();
             if (adding)
             {
-                //CommandList.Items.RemoveAt(CommandList.SelectedIndex);
                 adding = false;
+                UpdateUI();
             }
             else if (aboutToAdd)
             {
