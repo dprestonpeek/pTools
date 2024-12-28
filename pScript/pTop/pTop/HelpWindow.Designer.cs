@@ -46,12 +46,24 @@ namespace pScript
             label10 = new System.Windows.Forms.Label();
             label11 = new System.Windows.Forms.Label();
             ExampleTree = new System.Windows.Forms.TreeView();
+            tabControl1 = new System.Windows.Forms.TabControl();
+            tabPage1 = new System.Windows.Forms.TabPage();
+            tabPage2 = new System.Windows.Forms.TabPage();
+            richTextBox1 = new System.Windows.Forms.RichTextBox();
+            label3 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(12, 9);
+            label1.Location = new System.Drawing.Point(8, 12);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(388, 30);
             label1.TabIndex = 0;
@@ -60,7 +72,7 @@ namespace pScript
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(46, 64);
+            label2.Location = new System.Drawing.Point(42, 65);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(341, 30);
             label2.TabIndex = 1;
@@ -69,7 +81,7 @@ namespace pScript
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(12, 64);
+            label4.Location = new System.Drawing.Point(8, 65);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(23, 15);
             label4.TabIndex = 3;
@@ -78,7 +90,7 @@ namespace pScript
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new System.Drawing.Point(12, 133);
+            label8.Location = new System.Drawing.Point(8, 137);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(23, 15);
             label8.TabIndex = 7;
@@ -87,7 +99,7 @@ namespace pScript
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new System.Drawing.Point(46, 133);
+            label9.Location = new System.Drawing.Point(42, 137);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(338, 45);
             label9.TabIndex = 8;
@@ -96,7 +108,7 @@ namespace pScript
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new System.Drawing.Point(5, 215);
+            label10.Location = new System.Drawing.Point(1, 216);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(40, 15);
             label10.TabIndex = 9;
@@ -105,7 +117,7 @@ namespace pScript
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new System.Drawing.Point(46, 215);
+            label11.Location = new System.Drawing.Point(42, 216);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(351, 45);
             label11.TabIndex = 10;
@@ -114,7 +126,7 @@ namespace pScript
             // ExampleTree
             // 
             ExampleTree.ItemHeight = 30;
-            ExampleTree.Location = new System.Drawing.Point(405, 12);
+            ExampleTree.Location = new System.Drawing.Point(423, 3);
             ExampleTree.Name = "ExampleTree";
             treeNode1.Name = "Node1";
             treeNode1.Text = "Child Node";
@@ -136,25 +148,120 @@ namespace pScript
             ExampleTree.Size = new System.Drawing.Size(214, 258);
             ExampleTree.TabIndex = 11;
             // 
+            // tabControl1
+            // 
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new System.Drawing.Point(12, 12);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new System.Drawing.Size(648, 302);
+            tabControl1.TabIndex = 12;
+            // 
+            // tabPage1
+            // 
+            tabPage1.Controls.Add(label1);
+            tabPage1.Controls.Add(ExampleTree);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(label11);
+            tabPage1.Controls.Add(label4);
+            tabPage1.Controls.Add(label10);
+            tabPage1.Controls.Add(label8);
+            tabPage1.Controls.Add(label9);
+            tabPage1.Location = new System.Drawing.Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            tabPage1.Size = new System.Drawing.Size(640, 274);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Nodes";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(label7);
+            tabPage2.Controls.Add(label12);
+            tabPage2.Controls.Add(label6);
+            tabPage2.Controls.Add(label5);
+            tabPage2.Controls.Add(richTextBox1);
+            tabPage2.Controls.Add(label3);
+            tabPage2.Location = new System.Drawing.Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            tabPage2.Size = new System.Drawing.Size(640, 274);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Keywords";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.Enabled = false;
+            richTextBox1.Location = new System.Drawing.Point(360, 3);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new System.Drawing.Size(274, 265);
+            richTextBox1.TabIndex = 2;
+            richTextBox1.Text = "echo \"this line is not important\"\n\n\n::pToggle\n\n\necho \"this line is not important\"\n\n\n::pCall`Example Function Name`";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(6, 12);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(319, 15);
+            label3.TabIndex = 1;
+            label3.Text = "Keywords can be used in scripts to execute special features.";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(6, 68);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(55, 15);
+            label5.TabIndex = 3;
+            label5.Text = "::pToggle";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(70, 68);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(264, 45);
+            label6.TabIndex = 4;
+            label6.Text = "Make use of the Toggle feature. When the above \r\nkeyword is detected, the pScript menu item will\r\ntoggle its checkmark.";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(70, 142);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(256, 45);
+            label7.TabIndex = 6;
+            label7.Text = "Make use of the Call feature. When the above \r\nkeyword is detected, the specified script (in this\r\ncase, \"Example Function Name\" will execute.";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(6, 142);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(40, 15);
+            label12.TabIndex = 5;
+            label12.Text = "::pCall";
+            // 
             // HelpWindow
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(631, 282);
-            Controls.Add(ExampleTree);
-            Controls.Add(label11);
-            Controls.Add(label10);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(label4);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            ClientSize = new System.Drawing.Size(677, 326);
+            Controls.Add(tabControl1);
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "HelpWindow";
             Text = "Help";
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -167,5 +274,14 @@ namespace pScript
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TreeView ExampleTree;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label12;
     }
 }

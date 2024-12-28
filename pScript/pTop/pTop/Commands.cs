@@ -79,11 +79,12 @@ namespace pScript
                 if (cmd.displayText.Equals(commandName))
                 {
                     //Run any features
-                    if (Features.ScriptHasFeatures(cmd.commandText))
+                    string newScript = Features.ApplyFeatures(cmd.commandText);
+                    if (Features.pToggle)
                     {
                         cmd.isOn = !cmd.isOn;
                     }
-                    File.WriteAllText(scriptFile, cmd.commandText);
+                    File.WriteAllText(scriptFile, newScript);
                     ProcessStartInfo p = new ProcessStartInfo();
                     p.FileName = "CMD.exe";
                     p.Arguments = "/c " + scriptFile;
