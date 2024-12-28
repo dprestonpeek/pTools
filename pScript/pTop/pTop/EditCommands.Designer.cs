@@ -54,7 +54,7 @@ namespace pScript
             // 
             label1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(276, 15);
+            label1.Location = new System.Drawing.Point(276, 13);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(72, 15);
             label1.TabIndex = 1;
@@ -65,7 +65,7 @@ namespace pScript
             CommandList.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             CommandList.FormattingEnabled = true;
             CommandList.ItemHeight = 15;
-            CommandList.Location = new System.Drawing.Point(276, 31);
+            CommandList.Location = new System.Drawing.Point(310, 31);
             CommandList.Name = "CommandList";
             CommandList.Size = new System.Drawing.Size(191, 79);
             CommandList.TabIndex = 2;
@@ -114,7 +114,7 @@ namespace pScript
             // OKButton
             // 
             OKButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            OKButton.Location = new System.Drawing.Point(393, 281);
+            OKButton.Location = new System.Drawing.Point(426, 281);
             OKButton.Name = "OKButton";
             OKButton.Size = new System.Drawing.Size(75, 23);
             OKButton.TabIndex = 11;
@@ -137,7 +137,7 @@ namespace pScript
             // ReorderDown
             // 
             ReorderDown.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            ReorderDown.Location = new System.Drawing.Point(354, 7);
+            ReorderDown.Location = new System.Drawing.Point(388, 7);
             ReorderDown.Name = "ReorderDown";
             ReorderDown.Size = new System.Drawing.Size(23, 23);
             ReorderDown.TabIndex = 12;
@@ -148,7 +148,7 @@ namespace pScript
             // ReorderUp
             // 
             ReorderUp.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            ReorderUp.Location = new System.Drawing.Point(379, 7);
+            ReorderUp.Location = new System.Drawing.Point(413, 7);
             ReorderUp.Name = "ReorderUp";
             ReorderUp.Size = new System.Drawing.Size(23, 23);
             ReorderUp.TabIndex = 13;
@@ -159,7 +159,7 @@ namespace pScript
             // AddButton
             // 
             AddButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            AddButton.Location = new System.Drawing.Point(445, 7);
+            AddButton.Location = new System.Drawing.Point(479, 7);
             AddButton.Name = "AddButton";
             AddButton.Size = new System.Drawing.Size(23, 23);
             AddButton.TabIndex = 14;
@@ -170,7 +170,7 @@ namespace pScript
             // DeleteButton
             // 
             DeleteButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
-            DeleteButton.Location = new System.Drawing.Point(420, 7);
+            DeleteButton.Location = new System.Drawing.Point(454, 7);
             DeleteButton.Name = "DeleteButton";
             DeleteButton.Size = new System.Drawing.Size(23, 23);
             DeleteButton.TabIndex = 15;
@@ -180,9 +180,10 @@ namespace pScript
             // 
             // SaveChanges
             // 
+            SaveChanges.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             SaveChanges.AutoSize = true;
             SaveChanges.ForeColor = System.Drawing.Color.Red;
-            SaveChanges.Location = new System.Drawing.Point(302, 284);
+            SaveChanges.Location = new System.Drawing.Point(336, 285);
             SaveChanges.Name = "SaveChanges";
             SaveChanges.Size = new System.Drawing.Size(85, 15);
             SaveChanges.TabIndex = 16;
@@ -222,7 +223,7 @@ namespace pScript
             CommandTree.HideSelection = false;
             CommandTree.Location = new System.Drawing.Point(276, 31);
             CommandTree.Name = "CommandTree";
-            CommandTree.Size = new System.Drawing.Size(191, 243);
+            CommandTree.Size = new System.Drawing.Size(226, 243);
             CommandTree.TabIndex = 19;
             CommandTree.AfterSelect += CommandTree_AfterSelect;
             // 
@@ -230,7 +231,7 @@ namespace pScript
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(479, 311);
+            ClientSize = new System.Drawing.Size(513, 311);
             Controls.Add(CommandTree);
             Controls.Add(RunButton);
             Controls.Add(HelpButton);
