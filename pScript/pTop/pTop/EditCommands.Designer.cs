@@ -196,6 +196,7 @@ namespace pScript
             // 
             // HelpButton
             // 
+            HelpButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
             HelpButton.Location = new System.Drawing.Point(195, 7);
             HelpButton.Name = "HelpButton";
             HelpButton.Size = new System.Drawing.Size(75, 23);
