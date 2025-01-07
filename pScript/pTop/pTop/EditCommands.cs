@@ -127,8 +127,11 @@ namespace pScript
             if (CommandTree.SelectedNode != null)
             {
                 Command selectedCommand = Commands.GetCommandByString(CommandTree.SelectedNode.Text);
-                DisplayTextBox.Text = selectedCommand.displayText;
-                CommandTextBox.Text = selectedCommand.commandText;
+                if (selectedCommand != null)
+                {
+                    DisplayTextBox.Text = selectedCommand.displayText;
+                    CommandTextBox.Text = selectedCommand.commandText;
+                }
             }
             else
             {
@@ -146,15 +149,16 @@ namespace pScript
         {
             SaveChanges.Visible = false;
             editing = false;
-            displayText = DisplayTextBox.Text;
+            displayText = IncrementNameUntilUnique(DisplayTextBox.Text);
             commandText = CommandTextBox.Text;
             if (adding)
             {
                 adding = false;
-                CommandTree.SelectedNode = GetNodeByString(displayText);
             }
             Command newCommand = new Command(displayText, commandText, togglable);
-            Commands.SetCommandByString(displayText, newCommand);
+            Commands.SetCommandByString(CommandTree.SelectedNode.Text, newCommand);
+            CommandTree.SelectedNode.Text = displayText;
+            CommandTree.SelectedNode = GetNodeByString(displayText);
 
             Program.SaveCommands();
             DisableEditing();
