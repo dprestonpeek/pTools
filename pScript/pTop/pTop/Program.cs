@@ -28,11 +28,23 @@ namespace pScript
 
         static void Main(string[] args)
         {
-            notifyIcon.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
-            notifyIcon.Visible = true;
-            notifyIcon.Text = Application.ProductName;
-            notifyIcon.MouseClick += OpenContextMenu;
-            commandMenu.ShowCheckMargin = true;
+            bool hasArgs = false;
+            string commandToRun = "";
+            if (args.Length > 0)
+            {
+                //quick-run a command and then close
+                commandToRun = args[0].Substring(1, args[0].Length - 1);
+                hasArgs = true;
+            }
+            else
+            {
+                //long-run the program and minimize to tray
+                notifyIcon.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+                notifyIcon.Visible = true;
+                notifyIcon.Text = Application.ProductName;
+                notifyIcon.MouseClick += OpenContextMenu;
+                commandMenu.ShowCheckMargin = true;
+            }
 
             //if commands exist, load them, else create new file
             if (File.Exists(cmdFile))
@@ -44,7 +56,15 @@ namespace pScript
                 File.WriteAllText(cmdFile, "");
             }
 
-            Application.Run();
+            if (hasArgs)
+            {
+                Commands.FireCommandByString(commandToRun);
+            }
+            else
+            {
+                Application.Run();
+            }
+
         }
 
         public static void LoadCommands()

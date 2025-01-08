@@ -251,7 +251,7 @@ namespace pScript
             Controls.Add(label2);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "EditCommands";
-            Text = "pScript v1.1 (edit commands)";
+            Text = "pScript v1.1-2 (edit commands)";
             ResumeLayout(false);
             PerformLayout();
         }

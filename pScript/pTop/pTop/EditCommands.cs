@@ -149,7 +149,7 @@ namespace pScript
         {
             SaveChanges.Visible = false;
             editing = false;
-            displayText = IncrementNameUntilUnique(DisplayTextBox.Text);
+            displayText = IncrementNameUntilUnique(DisplayTextBox.Text, Commands.GetCommandByString(CommandTree.SelectedNode.Text).displayText);
             commandText = CommandTextBox.Text;
             if (adding)
             {
@@ -162,7 +162,7 @@ namespace pScript
 
             Program.SaveCommands();
             DisableEditing();
-            //RefreshList();
+            RefreshList();
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -281,6 +281,11 @@ namespace pScript
 
         private string IncrementNameUntilUnique(string displayName)
         {
+            return IncrementNameUntilUnique(displayName, "");
+        }
+
+        private string IncrementNameUntilUnique(string displayName, string ignore)
+        {
             string patternWparenths = "[ ][(]\\d+[)]";
             string patternIndex = "\\d+";
             Regex indexwParenths = new Regex(patternWparenths);
@@ -290,6 +295,11 @@ namespace pScript
             //if command exists in list already
             while (Commands.GetCommandByString(newDisplayName) != null)
             {
+                if (newDisplayName.Equals(ignore))
+                {
+                    return newDisplayName;
+                }
+
                 string endDisplayName = newDisplayName.Substring(newDisplayName.Length - 4, 4);
                 string beginDisplayName = newDisplayName.Substring(0, newDisplayName.Length - 4);
                 //if the command already has a " (##)" suffix
