@@ -71,13 +71,13 @@ namespace pScript
                         parents.RemoveAt(parents.Count - 1);
                         if (parents.Count > 0)
                         {
-                            newNode = parents[parents.Count - 1].Nodes.Add(displayName.Substring(2 + substringAdd));
+                            newNode = parents[parents.Count - 1].Nodes.Add(displayName);
                         }
                         else
                         {
-                            newNode = CommandTree.Nodes.Add(displayName.Substring(2 + substringAdd));
+                            newNode = CommandTree.Nodes.Add(displayName);
                         }
-                        parents.Add(newNode);
+                        parents.Add(newNode); 
                     }
                 }
                 //this will be a new parent
@@ -85,11 +85,11 @@ namespace pScript
                 {
                     if (parents.Count > 0)
                     {
-                        newNode = parents[parents.Count - 1].Nodes.Add(displayName.Substring(2));
+                        newNode = parents[parents.Count - 1].Nodes.Add(displayName);
                     }
                     else
                     {
-                        newNode = CommandTree.Nodes.Add(displayName.Substring(2));
+                        newNode = CommandTree.Nodes.Add(displayName);
                     }
                     parents.Add(newNode);
                 }
@@ -108,6 +108,7 @@ namespace pScript
                 {
                     lastItemAdded = newNode;
                 }
+                AllNodes.Add(displayName, newNode);
             }
             currentParent = null;
             CommandTree.ExpandAll();
