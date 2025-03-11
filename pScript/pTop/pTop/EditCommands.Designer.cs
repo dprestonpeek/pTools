@@ -48,6 +48,7 @@ namespace pScript
             HelpButton = new System.Windows.Forms.Button();
             RunButton = new System.Windows.Forms.Button();
             CommandTree = new System.Windows.Forms.TreeView();
+            FolderButton = new System.Windows.Forms.Button();
             SuspendLayout();
             // 
             // label1
@@ -87,6 +88,7 @@ namespace pScript
             CommandTextBox.Enabled = false;
             CommandTextBox.Location = new System.Drawing.Point(12, 77);
             CommandTextBox.Name = "CommandTextBox";
+            CommandTextBox.ShowSelectionMargin = true;
             CommandTextBox.Size = new System.Drawing.Size(258, 197);
             CommandTextBox.TabIndex = 7;
             CommandTextBox.Text = "";
@@ -126,7 +128,7 @@ namespace pScript
             // 
             SaveButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
             SaveButton.Enabled = false;
-            SaveButton.Location = new System.Drawing.Point(195, 280);
+            SaveButton.Location = new System.Drawing.Point(195, 281);
             SaveButton.Name = "SaveButton";
             SaveButton.Size = new System.Drawing.Size(75, 23);
             SaveButton.TabIndex = 10;
@@ -209,7 +211,7 @@ namespace pScript
             // 
             RunButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left;
             RunButton.Enabled = false;
-            RunButton.Location = new System.Drawing.Point(12, 280);
+            RunButton.Location = new System.Drawing.Point(12, 281);
             RunButton.Name = "RunButton";
             RunButton.Size = new System.Drawing.Size(75, 23);
             RunButton.TabIndex = 18;
@@ -228,11 +230,24 @@ namespace pScript
             CommandTree.TabIndex = 19;
             CommandTree.AfterSelect += CommandTree_AfterSelect;
             // 
+            // FolderButton
+            // 
+            FolderButton.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right;
+            FolderButton.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            FolderButton.Location = new System.Drawing.Point(165, 7);
+            FolderButton.Name = "FolderButton";
+            FolderButton.Size = new System.Drawing.Size(24, 23);
+            FolderButton.TabIndex = 20;
+            FolderButton.Text = "🗀";
+            FolderButton.UseVisualStyleBackColor = true;
+            FolderButton.Click += FolderButton_Click;
+            // 
             // EditCommands
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(513, 311);
+            Controls.Add(FolderButton);
             Controls.Add(CommandTree);
             Controls.Add(RunButton);
             Controls.Add(HelpButton);
@@ -251,7 +266,7 @@ namespace pScript
             Controls.Add(label2);
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             Name = "EditCommands";
-            Text = "pScript v1.1-2 (edit commands)";
+            Text = "pScript v1.1-5 (edit commands)";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -275,5 +290,6 @@ namespace pScript
         private System.Windows.Forms.Button HelpButton;
         private System.Windows.Forms.Button RunButton;
         public System.Windows.Forms.TreeView CommandTree;
+        private System.Windows.Forms.Button FolderButton;
     }
 }

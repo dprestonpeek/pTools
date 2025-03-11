@@ -17,7 +17,7 @@ namespace pScript
         public static string ApplyFeatures(string commandText)
         {
             pToggle = CheckForpToggle(commandText);
-            if (CheckForpCall(commandText))
+            while (CheckForpCall(commandText))
             {
                 commandText = ReplaceCommand(commandText);
             }

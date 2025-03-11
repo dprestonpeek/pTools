@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -35,46 +37,76 @@ namespace pScript
         private void RefreshList()
         {
             List<TreeNode> parents = new List<TreeNode>();
+            TreeNode lastItemAdded = null;
 
             CommandTree.Nodes.Clear();
             AllNodes.Clear();
             foreach (Command cmd in Commands.commandList)
             {
+                //create the new node we will add to the tree
                 TreeNode newNode = null;
-                bool newNodeIsNextParent = false;
+                string displayName = cmd.displayText;
 
-                if (cmd.displayText != "" && cmd.displayText.Substring(0, 2).Equals("><"))
+                //this is a new parent, but also close the current submenu
+                if (displayName != "" && displayName.Substring(0, 2).Equals("><"))
                 {
-                    newNodeIsNextParent = true;
-                    int layers = 1;
-                    int index = 2;
-                    while (cmd.displayText[index].Equals('<'))
+                    string braces = "><<";
+                    int substringAdd = 0;
+                    while (displayName.Contains(braces))
                     {
-                        layers++;
-                        index++;
+                        if (parents.Count > 0)
+                        {
+                            parents.RemoveAt(parents.Count - 1);
+                            braces += "<";
+                            substringAdd++;
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
-                    currentParent = parents[parents.Count - 1 - layers];
-                }
 
-                if (currentParent == null)
+                    if (parents.Count > 0)
+                    {
+                        parents.RemoveAt(parents.Count - 1);
+                        if (parents.Count > 0)
+                        {
+                            newNode = parents[parents.Count - 1].Nodes.Add(displayName.Substring(2 + substringAdd));
+                        }
+                        else
+                        {
+                            newNode = CommandTree.Nodes.Add(displayName.Substring(2 + substringAdd));
+                        }
+                        parents.Add(newNode);
+                    }
+                }
+                //this will be a new parent
+                else if (displayName != "" && displayName.Substring(0, 2).Equals(">>"))
                 {
-                    newNode = CommandTree.Nodes.Add(cmd.displayText);
-                    AllNodes.Add(cmd.displayText, newNode);
+                    if (parents.Count > 0)
+                    {
+                        newNode = parents[parents.Count - 1].Nodes.Add(displayName.Substring(2));
+                    }
+                    else
+                    {
+                        newNode = CommandTree.Nodes.Add(displayName.Substring(2));
+                    }
+                    parents.Add(newNode);
                 }
                 else
                 {
-                    newNode = currentParent.Nodes.Add(cmd.displayText);
-                    AllNodes.Add(cmd.displayText, newNode);
+                    if (parents.Count > 0)
+                    {
+                        newNode = parents[parents.Count - 1].Nodes.Add(displayName);
+                    }
+                    else
+                    {
+                        newNode = CommandTree.Nodes.Add(displayName);
+                    }
                 }
-                if (cmd.displayText != "" && cmd.displayText.Substring(0,2).Equals(">>"))
+                if (newNode != null)
                 {
-                    currentParent = newNode;
-                    parents.Add(newNode);
-                }
-                if (newNodeIsNextParent)
-                {
-                    currentParent = newNode;
-                    parents.Add(newNode);
+                    lastItemAdded = newNode;
                 }
             }
             currentParent = null;
@@ -163,6 +195,7 @@ namespace pScript
             Program.SaveCommands();
             DisableEditing();
             RefreshList();
+            CommandTree.SelectedNode = GetNodeByString(displayText);
         }
 
         private void OKButton_Click(object sender, EventArgs e)
@@ -324,7 +357,7 @@ namespace pScript
         private TreeNode GetNodeByString(string displayText)
         {
             //return GetNodeByString(displayText, CommandTree.Nodes);
-            foreach (KeyValuePair<string, TreeNode> kvp in AllNodes) 
+            foreach (KeyValuePair<string, TreeNode> kvp in AllNodes)
             {
                 if (kvp.Key.Equals(displayText))
                 {
@@ -336,7 +369,7 @@ namespace pScript
 
         private TreeNode GetNodeByString(string displayText, TreeNodeCollection nodesToCheck)
         {
-            
+
             foreach (TreeNode node in nodesToCheck)
             {
                 if (node.Text == displayText)
@@ -368,6 +401,11 @@ namespace pScript
             {
                 UpdateUI();
             }
+        }
+
+        private void FolderButton_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", Directory.GetCurrentDirectory());
         }
     }
 }

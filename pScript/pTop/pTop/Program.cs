@@ -103,18 +103,9 @@ namespace pScript
                 {
                     ToolStripMenuItem itemToAdd = null;
                     string displayName = command.displayText;
-                    //this is the last item in submenu, but also a new parent
-                    if (displayName.Contains("<>"))
-                    {
-                        if (parents.Count > 0)
-                        {
-                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2));
-                            parents.RemoveAt(parents.Count - 1);
-                            parents.Add(itemToAdd);
-                        }
-                    }
+                    
                     //this is a new parent, but also close the current submenu
-                    else if (displayName.Contains("><"))
+                    if (displayName != "" && displayName.Substring(0, 2).Equals("><"))
                     {
                         string braces = "><<";
                         int substringAdd = 0;
@@ -147,7 +138,7 @@ namespace pScript
                         }
                     }
                     //this will be a new parent
-                    else if (displayName.Contains(">>"))
+                    else if (displayName != "" && displayName.Substring(0, 2).Equals(">>"))
                     {
                         if (parents.Count > 0)
                         {
@@ -158,37 +149,6 @@ namespace pScript
                             itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2));
                         }
                         parents.Add(itemToAdd);
-                    }
-                    //close the current submenu and create a new item
-                    else if (displayName.Contains("<<"))
-                    {
-                        string braces = "<<<";
-                        int substringAdd = 0;
-                        while (displayName.Contains(braces))
-                        {
-                            if (parents.Count > 0)
-                            {
-                                parents.RemoveAt(parents.Count - 1);
-                                braces += "<";
-                                substringAdd++;
-                            }
-                            else
-                            {
-                                return;
-                            }
-                        }
-                        if (parents.Count > 0)
-                        {
-                            parents.RemoveAt(parents.Count - 1);
-                        }
-                        if (parents.Count > 0)
-                        {
-                            itemToAdd = (ToolStripMenuItem)parents[parents.Count - 1].DropDownItems.Add(displayName.Substring(2 + substringAdd));
-                        }
-                        else
-                        {
-                            itemToAdd = (ToolStripMenuItem)commandMenu.Items.Add(displayName.Substring(2 + substringAdd));
-                        }
                     }
                     else
                     {
